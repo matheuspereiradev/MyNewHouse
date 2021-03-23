@@ -1,0 +1,131 @@
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
+
+export class CreateUser1616535029144 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.createTable(new Table({
+            name:"tb_user",
+            columns:[
+                {
+                    name:"id",
+                    type:"varchar",
+                    length:"50",
+                    isPrimary:true,
+                    isUnique:true
+                },
+                {
+                    name:"name",
+                    type:"varchar",
+                    length:"50"
+                },
+                {
+                    name:"email",
+                    type:"varchar",
+                    length:"50",
+                    isUnique:true
+                },
+                {
+                    name:"birth_date",
+                    type:"timestamp"
+                },
+                {
+                    name:"password",
+                    type:"varchar",
+                    length:"100"
+                },
+                {
+                    name:"cpf",
+                    type:"varchar",
+                    length:"11",
+                    isUnique:true,
+                    isNullable:true
+
+                },
+                {
+                    name:"cnpj",
+                    type:"varchar",
+                    length:"15",
+                    isUnique:true,
+                    isNullable:true
+                },
+                {
+                    name:"street",
+                    type:"varchar",
+                    length:"100"
+                },
+                {
+                    name:"number",
+                    type:"varchar",
+                    length:"5"
+                },
+                {
+                    name:"district",
+                    type:"varchar",
+                    length:"50"
+                },
+                {
+                    name:"complement",
+                    type:"varchar",
+                    length:"30"
+                },
+                {
+                    name:"reference",
+                    type:"varchar",
+                    length:"30"
+                },
+                {
+                    name:"income",
+                    type:"decimal",
+                    length:"6,2",
+                    isNullable:true
+                },
+                {
+                    name:"phonenumber",
+                    type:"varchar",
+                    length:"15"
+                },
+                {
+                    name:"phonenumber_2",
+                    type:"varchar",
+                    length:"15",
+                    isNullable:true
+                },
+                {
+                    name:"id_city",
+                    type:"int"
+                },
+                {
+                    name:"is_broker",
+                    type:"tinyint",
+                    default:"0"
+
+                },
+                {
+                    name:"created_at",
+                    type:"timestamp",
+                    default:"CURRENT_TIMESTAMP"
+                },
+                {
+                    name:"deleted_at",
+                    type:"timestamp",
+                    isNullable:true
+                }
+        ],
+        foreignKeys:[
+            {
+                name:"fk_user_city",
+                referencedTableName:"tb_city",
+                referencedColumnNames:["id"],
+                columnNames:["id_city"],
+                onUpdate:"CASCADE"
+            }
+        ]
+        }))
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        queryRunner.dropTable("tb_user");
+    }
+
+}
+
