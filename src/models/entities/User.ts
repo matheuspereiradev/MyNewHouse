@@ -58,7 +58,7 @@ class User{
     city:City
 
     @Column({name:"is_broker"})
-    idPermission:boolean;
+    isBroker:boolean;
 
     @CreateDateColumn()
     created_at:Date;
