@@ -2,7 +2,7 @@ import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOn
 import {v4 as uuid} from 'uuid'
 import { City } from "./City";
 
-@Entity("tbgusuario")
+@Entity("tb_user")
 class User{
 
     @PrimaryColumn()
@@ -29,11 +29,11 @@ class User{
     @Column()
     street:string;
 
-    @Column()
+    @Column({name:"number"})
     houseNumber:number;
 
     @Column()
-    distrinct:string;
+    district:string;
 
     @Column()
     complement:string;
@@ -50,7 +50,7 @@ class User{
     @Column({name:"phonenumber_2"})
     phoneNumber2:string;
 
-    @Column()
+    @Column({name:"id_city"})
     idCity:number;
 
     @OneToOne(type=>City,city=>city.id)
