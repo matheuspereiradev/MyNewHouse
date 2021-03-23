@@ -1,4 +1,4 @@
-import { SessionCreateService } from '../services/SessionCreateService';
+import { AuthUserService } from '../services/AuthUserService';
 import { Request, Response } from "express";
 import { User } from "../models/entities/User";
 
@@ -18,7 +18,7 @@ class SessionController {
 
         const { email, password } = request.body;
 
-        const sessionService = new SessionCreateService();
+        const sessionService = new AuthUserService();
 
         const { user, token } = await sessionService.authenticate({
             email,

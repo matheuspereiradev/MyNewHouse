@@ -17,7 +17,7 @@ interface ReturnUserAuth {
 }
 
 
-class SessionCreateService {
+class AuthUserService {
 
     async authenticate({ email, password }: Auth): Promise<ReturnUserAuth> {
         const userRepository = getRepository(User);
@@ -52,4 +52,4 @@ class SessionCreateService {
     }
 }
 
-export { SessionCreateService };
+export { AuthUserService };
