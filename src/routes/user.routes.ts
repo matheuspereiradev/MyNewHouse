@@ -5,7 +5,7 @@ const routesUser = Router();
 
 const userController = new UserController();
 
-//routesUser.get('/all',userController.show);
+routesUser.get('/',userController.show);
 routesUser.post('/',userController.create);
 
 

@@ -1,17 +1,19 @@
 import { Request, Response } from 'express';
+import { getRepository } from 'typeorm';
 import Erro from '../errors/AppError';
+import { User } from '../models/entities/User';
 import { CreateUserService } from '../services/CreateUserService';
 
 class UserController {
 
     async show(request: Request, response: Response) {
 
-        /*const userRepository = getCustomRepository(UserRepository);
+        const userRepository = getRepository(User);
         const all = await userRepository.find({
             relations: ["city"]
         });
 
-        return response.status(200).json(all);*/
+        return response.status(200).json(all);
     }
 
     async create(request: Request, response: Response) {
