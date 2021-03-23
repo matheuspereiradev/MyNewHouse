@@ -5,7 +5,8 @@ import ensureAuthenticated from '../middleware/ensureAuthenticated';
 
 const routes = Router();
 
-routes.get('/healthz',ensureAuthenticated,(req:Request,res:Response)=>{res.json({"status":"running"})});
+routes.get('/test/auth',ensureAuthenticated,(req:Request,res:Response)=>{res.json({"status":"autenticated"})});
+routes.get('/healthz',(req:Request,res:Response)=>{res.json({"status":"running"})});
 
 routes.use('/user',routesUser);
 routes.use('/session',routesSession);
