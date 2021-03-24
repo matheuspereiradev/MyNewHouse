@@ -1,8 +1,8 @@
 import express, { NextFunction,Response,Request } from 'express';
 import 'express-async-errors'
 import cors from 'cors';
-import { routes } from '@shared/infra/http/routes/index.routes';
 import CreateConnection from '@shared/infra/typeorm/index';
+import { routes } from '@shared/infra/http/routes/index.routes';
 import 'reflect-metadata';
 import Erro from '@shared/errors/AppError';
 import path from 'path';

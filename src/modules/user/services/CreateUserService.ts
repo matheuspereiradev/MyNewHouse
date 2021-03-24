@@ -1,5 +1,4 @@
 import { DocumentValidation } from '@shared/helpers/documentValidation';
-import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
 import { hash } from 'bcryptjs';
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
@@ -24,7 +23,7 @@ interface IUserInterface{
 }
 
 class CreateUserService {
-//isso é equivalete a criar uma variavele atribuir o paramtro a ele
+//isso é equivalete a criar uma variavel atribuir o paramtro a ele
     constructor(private repository:IUserRepository){}
 
     public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
@@ -35,14 +34,12 @@ class CreateUserService {
             }
         }
 
-        /*const emailAlreadyUse = await this.repository.findOne({
-            where: { email }
-        });
-
+        const emailAlreadyUse = await this.repository.findByEmail(email);
+        console.log(emailAlreadyUse)
         if (emailAlreadyUse) {
             throw new Erro("Email already in use",1002, 409);
         }
-*/
+
         const hashedPassword = await hash(password, 8);
         const user = await this.repository.create({
             name, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
