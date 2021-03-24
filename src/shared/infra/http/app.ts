@@ -7,6 +7,8 @@ import 'reflect-metadata';
 import Erro from '@shared/errors/AppError';
 import path from 'path';
 
+import '@shared/container'
+
 const app = express();
 
 app.use(express.json());

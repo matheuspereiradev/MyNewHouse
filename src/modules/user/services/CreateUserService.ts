@@ -1,4 +1,5 @@
 import { DocumentValidation } from '@shared/helpers/documentValidation';
+import { inject,injectable } from 'tsyringe'
 import { hash } from 'bcryptjs';
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
@@ -22,9 +23,13 @@ interface IUserInterface{
     idCity:number
 }
 
+@injectable()
 class CreateUserService {
 //isso é equivalete a criar uma variavel atribuir o paramtro a ele
-    constructor(private repository:IUserRepository){}
+    constructor(
+        @inject('UserRepository')
+        private repository:IUserRepository
+    ){}
 
     public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
 
