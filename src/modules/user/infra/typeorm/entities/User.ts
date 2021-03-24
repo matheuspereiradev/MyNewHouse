@@ -1,6 +1,6 @@
-import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn} from "typeorm"
+import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm"
 import {v4 as uuid} from 'uuid'
-import { City } from "./City";
+import { City } from "@modules/localization/entities/City"
 
 @Entity("tb_user")
 class User{

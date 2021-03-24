@@ -1,6 +1,6 @@
-import { AuthUserService } from '../services/AuthUserService';
+import { AuthUserService } from '@modules/user/services/AuthUserService';
 import { Request, Response } from "express";
-import { User } from "../models/entities/User";
+import { User } from  '@modules/user/infra/typeorm/entities/User';
 
 interface Auth {
     email: string,

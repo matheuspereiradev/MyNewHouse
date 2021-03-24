@@ -1,8 +1,8 @@
-import { DocumentValidation } from '../helpers/documentValidation';
+import { DocumentValidation } from '@shared/helpers/documentValidation';
 import { getRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
-import Erro from '../errors/AppError';
-import { User } from '../models/entities/User';
+import Erro from '@shared/errors/AppError';
+import { User } from '@modules/user/infra/typeorm/entities/User';
 
 interface UserInterface{
     name:string, 

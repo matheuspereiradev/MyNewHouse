@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import Erro from '../errors/AppError';
-import { User } from '../models/entities/User';
-import { CreateUserService } from '../services/CreateUserService';
+import Erro from '@shared/errors/AppError';
+import { User } from '@modules/user/infra/typeorm/entities/User';
+import { CreateUserService } from '@modules/user/services/CreateUserService';
 
 class UserController {
 
