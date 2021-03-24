@@ -6,7 +6,7 @@
     "password": "1234",
     "database": "dbmynewhouse",
     "migrations":["./src/shared/infra/typeorm/migrations/**.ts"],
-    "entities":["./src/models/entities/**.ts"],
+    "entities":["./src/modules/**/infra/typeorm/entities/**.ts"],
     "logging":false,
     "cli":{
         "migrationsDir":"./src/shared/infra/typeorm/migrations"

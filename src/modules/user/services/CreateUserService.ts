@@ -1,10 +1,11 @@
 import { DocumentValidation } from '@shared/helpers/documentValidation';
-import { getRepository } from 'typeorm';
+import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
 import { hash } from 'bcryptjs';
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
+import IUserRepository from '../IRepositories/IUserRepository';
 
-interface UserInterface{
+interface IUserInterface{
     name:string, 
     email:string, 
     birthDate:Date, 
@@ -23,10 +24,10 @@ interface UserInterface{
 }
 
 class CreateUserService {
+//isso é equivalete a criar uma variavele atribuir o paramtro a ele
+    constructor(private repository:IUserRepository){}
 
-    public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:UserInterface):Promise<User> {
-
-        const userRepository = getRepository(User);
+    public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
 
         if (cpf) {
             if (!DocumentValidation.cpf(cpf)) {
@@ -34,23 +35,20 @@ class CreateUserService {
             }
         }
 
-        const emailAlreadyUse = await userRepository.findOne({
+        /*const emailAlreadyUse = await this.repository.findOne({
             where: { email }
         });
 
         if (emailAlreadyUse) {
             throw new Erro("Email already in use",1002, 409);
         }
-
+*/
         const hashedPassword = await hash(password, 8);
-        const user = userRepository.create({
+        const user = await this.repository.create({
             name, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
         });
 
-        await userRepository.save(user)
-
         return user;
-
     }
 
 };
