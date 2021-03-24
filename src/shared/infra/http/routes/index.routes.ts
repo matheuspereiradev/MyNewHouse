@@ -1,7 +1,7 @@
 import {Router,Request,Response} from 'express';
 import { routesSession } from '@modules/user/infra/http/routes/session.routes';
 import { routesUser } from '@modules/user/infra/http/routes/user.routes';
-import ensureAuthenticated from  '@shared/infra/http/middleware/ensureAuthenticated';
+import ensureAuthenticated from  '@modules/user/infra/http/middleware/ensureAuthenticated';
 
 const routes = Router();
 
