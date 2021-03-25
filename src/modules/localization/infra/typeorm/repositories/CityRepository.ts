@@ -17,6 +17,11 @@ class CityRepository implements ILocalizationRepository {
         return findCities||undefined;
     }
 
+    public async findAll():Promise<Array<City>>{
+        const findedCities = this.ormRepository.find();
+        return findedCities;
+    }
+
 }
 
 export {CityRepository}
