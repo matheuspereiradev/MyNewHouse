@@ -20,6 +20,8 @@ app.use('/files',express.static(path.resolve(__dirname,"..","temp")));
 app.use(routes)
 app.use(
     (err:Error, request:Request, response:Response, next:NextFunction)=>{
+        console.log("erro")
+
     if(err instanceof Erro){
         return response.status(err.statusCode).json({
             "status":"error: "+err.internalCode,

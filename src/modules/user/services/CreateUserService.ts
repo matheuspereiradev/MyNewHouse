@@ -40,7 +40,7 @@ class CreateUserService {
         }
 
         const emailAlreadyUse = await this.repository.findByEmail(email);
-        console.log(emailAlreadyUse)
+
         if (emailAlreadyUse) {
             throw new Erro("Email already in use",1002, 409);
         }

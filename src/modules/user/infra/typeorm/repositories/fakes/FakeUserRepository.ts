@@ -17,11 +17,11 @@ class FakeUserRepository implements IUserRepository{
         return user;
     }
 
-    public async findByEmail(email:string):Promise<User>{
-        const all = this.users.find(usr=>{
-            usr.email === email
-        })
-        return all;
+    public async findByEmail(email:string):Promise<User>{ 
+               
+        const foundUser = this.users.find(usr => usr.email === email,);
+
+        return foundUser;
     };
 
     public async findByID(id:string):Promise<User>{
