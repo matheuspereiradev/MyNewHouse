@@ -34,6 +34,16 @@ class UserRepository implements IUserRepository{
         return all;
     }
 
+    public async findByCNPJ(cnpj:string):Promise<User>{
+        const all = await this.ormRepository.findOne({relations: ["city"], where:{cnpj}});
+        return all;
+    }
+
+    public async findByCPF(cpf:string):Promise<User>{
+        const all = await this.ormRepository.findOne({relations: ["city"], where:{cpf}});
+        return all;
+    }
+
 }
 
 export {UserRepository}

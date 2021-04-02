@@ -34,6 +34,20 @@ class FakeUserRepository implements IUserRepository{
         return this.users;
     }
 
+    public async findByCPF(cpf:string):Promise<User>{ 
+               
+        const foundUser = this.users.find(usr => usr.cpf === cpf);
+
+        return foundUser;
+    };
+
+    public async findByCNPJ(cnpj:string):Promise<User>{ 
+               
+        const foundUser = this.users.find(usr => usr.cnpj === cnpj);
+
+        return foundUser;
+    };
+
 }
 
 export {FakeUserRepository}

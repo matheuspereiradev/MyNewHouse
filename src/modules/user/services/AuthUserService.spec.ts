@@ -14,7 +14,7 @@ describe("Test service of Auth service", () => {
         const authService = new AuthUserService(fakeRepository, hashProviderFake);
         const createUserService = new CreateUserService(fakeRepository, hashProviderFake);
 
-        const { email, id,password } = await createUserService.execute({
+        const { email, id } = await createUserService.execute({
             name: "Abduh Lahn Xankahr",
             email: "abduh@mail.com",
             birthDate: new Date(),

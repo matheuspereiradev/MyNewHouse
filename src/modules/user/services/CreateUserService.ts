@@ -36,17 +36,8 @@ class CreateUserService {
 
     public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
 
-        if (cpf) {
-            if (!DocumentValidation.cpf(cpf)) {
-                throw new Erro("CPF not is valid",1001);
-            }
-        }
-
-        const emailAlreadyUse = await this.repository.findByEmail(email);
-
-        if (emailAlreadyUse) {
-            throw new Erro("Email already in use",1002, 409);
-        }
+        await this.validateDocument(cpf,cnpj);
+        await this.validateEmail(email);
 
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.create({
@@ -54,6 +45,41 @@ class CreateUserService {
         });
 
         return user;
+    }
+
+    public async validateDocument(cpf:string,cnpj:string){
+        if (cpf) {
+            this.validateCPF(cpf)
+        }else if(cnpj){
+            this.validateCPNJ(cnpj)
+        }else{
+            throw new Erro("CPF or CNPJ is required",1026);
+        }
+    }
+
+    public async validateCPF(cpf:string){
+
+        DocumentValidation.cpf(cpf);
+
+        const user = await this.repository.findByCPF(cpf);
+        if(user){
+            throw new Erro("CPF already in use",1025,409);
+        }
+    }
+
+    public async validateCPNJ(cnpj:string){
+        const user = await this.repository.findByCNPJ(cnpj);
+        if(user){
+            throw new Erro("CNPJ already in use",1026,409);
+        }
+    }
+
+    public async validateEmail(email:string){
+        const emailAlreadyUse = await this.repository.findByEmail(email);
+
+        if (emailAlreadyUse) {
+            throw new Erro("Email already in use",1002, 409);
+        }
     }
 
 };

@@ -1,4 +1,4 @@
-
+import Erro from '@shared/errors/AppError';
 export class DocumentValidation{
     public static cpf(cpf: string): boolean {
         if (cpf == null) {
@@ -50,7 +50,7 @@ export class DocumentValidation{
         }
         cpfAux = cpfAux + digito2;
         if (cpf != cpfAux) {
-            return false;
+            throw new Erro("CPF not is valid",1001);
         }
         else {
             return true;
