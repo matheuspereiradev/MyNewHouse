@@ -36,7 +36,6 @@ class AuthUserService {
             throw new Erro("Email or password invalid",1003, 401);
         }
 
-        
         const passwordMatch = await this.hashProvider.compareHash(password, user.password);
         if (!passwordMatch) {
             throw new Erro("Email or password invalid",1004, 401);

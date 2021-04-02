@@ -9,6 +9,6 @@ export default class FakeHashProvider implements IHashProvider{
     }
 
     public async compareHash(text:string, hashedString:string):Promise<boolean>{
-        return text === text+this.hash;
+        return hashedString === text+this.hash;
     }
 };
