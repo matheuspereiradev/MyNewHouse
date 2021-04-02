@@ -1,9 +1,11 @@
-import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { getRepository } from 'typeorm';
 import authConfig from "@config/auth";
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
+import { inject, injectable } from 'tsyringe';
+import IUserRepository from '../IRepositories/IUserRepository';
+import BCryptHashProvider from '../infra/providers/HashProvider/implementation/bcryptHashProvider';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
 
 interface Auth {
     email: string,
@@ -15,19 +17,27 @@ interface ReturnUserAuth {
     token: string
 }
 
-
+@injectable()
 class AuthUserService {
 
+    constructor(
+        @inject('UserRepository')
+        private repository:IUserRepository,
+
+        @inject('HashProvider')
+        private hashProvider:IHashProvider
+    ){}
+
     async authenticate({ email, password }: Auth): Promise<ReturnUserAuth> {
-        const userRepository = getRepository(User);
-        const user = await userRepository.findOne({ where: { email } });
+        
+        const user = await this.repository.findByEmail(email);
 
         if (!user) {
             throw new Erro("Email or password invalid",1003, 401);
         }
 
         
-        const passwordMatch = await compare(password, user.password);
+        const passwordMatch = await this.hashProvider.compareHash(password, user.password);
         if (!passwordMatch) {
             throw new Erro("Email or password invalid",1004, 401);
         }

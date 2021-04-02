@@ -1,6 +1,7 @@
 import { AuthUserService } from '@modules/user/services/AuthUserService';
 import { Request, Response } from "express";
 import { User } from  '@modules/user/infra/typeorm/entities/User';
+import { container } from 'tsyringe';
 
 interface Auth {
     email: string,
@@ -18,7 +19,7 @@ class SessionController {
 
         const { email, password } = request.body;
 
-        const sessionService = new AuthUserService();
+        const sessionService = container.resolve(AuthUserService); 
 
         const { user, token } = await sessionService.authenticate({
             email,

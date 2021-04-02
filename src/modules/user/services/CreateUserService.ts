@@ -1,9 +1,9 @@
 import { DocumentValidation } from '@shared/helpers/documentValidation';
 import { inject,injectable } from 'tsyringe'
-import { hash } from 'bcryptjs';
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
 import IUserRepository from '../IRepositories/IUserRepository';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
 
 interface IUserInterface{
     name:string, 
@@ -28,7 +28,10 @@ class CreateUserService {
 //isso é equivalete a criar uma variavel atribuir o paramtro a ele
     constructor(
         @inject('UserRepository')
-        private repository:IUserRepository
+        private repository:IUserRepository,
+
+        @inject('HashProvider')
+        private hashProvider:IHashProvider
     ){}
 
     public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
@@ -45,7 +48,7 @@ class CreateUserService {
             throw new Erro("Email already in use",1002, 409);
         }
 
-        const hashedPassword = await hash(password, 8);
+        const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.create({
             name, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
         });

@@ -2,12 +2,14 @@ import "reflect-metadata"
 import {CreateUserService} from "../services/CreateUserService";
 import {FakeUserRepository} from "../infra/typeorm/repositories/fakes/FakeUserRepository";
 import Erro from '@shared/errors/AppError';
+import FakeHashProvider from "../infra/providers/HashProvider/fakes/FakeHashProvider";
 
 describe("Test Service CreateUser",()=>{
     it("should be able to create a new user",async ()=>{
         const repositoryFake = new FakeUserRepository();
+        const hashProviderFake = new FakeHashProvider();
 
-        const createUserService = new CreateUserService(repositoryFake);
+        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
 
         const usr = await createUserService.execute({
             name:"Joao Geraldo da Cruz",
@@ -35,8 +37,9 @@ describe("Test Service CreateUser",()=>{
     it(" should not be able to create a new user whith a duplicated email",async()=>{
 
         const repositoryFake = new FakeUserRepository();
+        const hashProviderFake = new FakeHashProvider();
 
-        const createUserService = new CreateUserService(repositoryFake);
+        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
 
         await createUserService.execute({
             name:"Joe Many",
@@ -79,8 +82,9 @@ describe("Test Service CreateUser",()=>{
     it(" should not be able to create a new user whith a wrong CPF",async()=>{
 
         const repositoryFake = new FakeUserRepository();
+        const hashProviderFake = new FakeHashProvider();
 
-        const createUserService = new CreateUserService(repositoryFake);
+        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
 
         expect(createUserService.execute({
             name:"Joao Geraldo da Cruz",
@@ -100,7 +104,4 @@ describe("Test Service CreateUser",()=>{
             idCity:1
         })).rejects.toBeInstanceOf(Erro)
     });
-
-    
-
 })
