@@ -1,14 +1,15 @@
 import Erro from '@shared/errors/AppError';
 export class DocumentValidation{
-    public static cpf(cpf: string): boolean {
+    public static async cpf(cpf: string): Promise<boolean> {
+        console.log(cpf)
         if (cpf == null) {
-            return false;
+            throw new Erro("CPF not is valid",1001);
         }
         if (cpf.length != 11) {
-            return false;
+            throw new Erro("CPF not is valid",1001);
         }
         if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
-            return false;
+            throw new Erro("CPF not is valid",1001);
         }
         let numero: number = 0;
         let caracter: string = '';
@@ -20,6 +21,7 @@ export class DocumentValidation{
         let digito2: number = 0;
         let cpfAux: string = '';
         cpfAux = cpf.substring(0, 9);
+        console.log("ak")
         for (let i: number = 0; i < 9; i++) {
             caracter = cpfAux.charAt(i);
             if (numeros.search(caracter) == -1) {

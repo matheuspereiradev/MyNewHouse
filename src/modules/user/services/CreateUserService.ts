@@ -61,7 +61,7 @@ class CreateUserService {
 
     public async validateCPF(cpf:string){
         
-        await DocumentValidation.cpf(cpf)
+        await DocumentValidation.cpf(cpf);
 
         const user = await this.repository.findByCPF(cpf);
 
