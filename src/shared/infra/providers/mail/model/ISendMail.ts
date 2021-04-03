@@ -1,4 +1,3 @@
-export default interface IHashProvider{
-    genarateHash(seed:string):Promise<string>;
-    compareHash(text:string, hashedString:string):Promise<boolean>;
+export default interface ISendMail{
+    sendEmail(to:string,subject:string,variables:object,model:string):Promise<string>;
 }
