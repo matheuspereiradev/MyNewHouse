@@ -1,7 +1,6 @@
 import Erro from '@shared/errors/AppError';
 export class DocumentValidation{
     public static async cpf(cpf: string): Promise<boolean> {
-        console.log(cpf)
         if (cpf == null) {
             throw new Erro("CPF not is valid",1001);
         }
@@ -21,7 +20,6 @@ export class DocumentValidation{
         let digito2: number = 0;
         let cpfAux: string = '';
         cpfAux = cpf.substring(0, 9);
-        console.log("ak")
         for (let i: number = 0; i < 9; i++) {
             caracter = cpfAux.charAt(i);
             if (numeros.search(caracter) == -1) {
