@@ -1,7 +1,7 @@
 import "reflect-metadata"
-import { AuthUserService } from "../services/AuthUserService";
+import { AuthUserService } from "./AuthUserService";
 import { FakeUserRepository } from "../infra/typeorm/repositories/fakes/FakeUserRepository";
-import { CreateUserService } from "../services/CreateUserService"
+import { CreateUserService } from "./CreateUserService"
 import Erro from '@shared/errors/AppError';
 import FakeHashProvider from "../infra/providers/HashProvider/fakes/FakeHashProvider";
 

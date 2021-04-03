@@ -3,7 +3,7 @@ import { inject,injectable } from 'tsyringe'
 import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
 import IUserRepository from '../IRepositories/IUserRepository';
-import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider'; 
 
 interface IUserInterface{
     name:string, 
@@ -38,6 +38,8 @@ class CreateUserService {
 
         await this.validateDocument(cpf,cnpj);
         await this.validateEmail(email);
+        
+        
 
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.create({
@@ -49,21 +51,22 @@ class CreateUserService {
 
     public async validateDocument(cpf:string,cnpj:string){
         if (cpf) {
-            this.validateCPF(cpf)
+            await this.validateCPF(cpf)
         }else if(cnpj){
-            this.validateCPNJ(cnpj)
+            await this.validateCPNJ(cnpj)
         }else{
             throw new Erro("CPF or CNPJ is required",1026);
         }
     }
 
     public async validateCPF(cpf:string){
-
-        DocumentValidation.cpf(cpf);
+        
+        await DocumentValidation.cpf(cpf)
 
         const user = await this.repository.findByCPF(cpf);
+
         if(user){
-            throw new Erro("CPF already in use",1025,409);
+            throw new Erro("CPF already in use",1027,409);
         }
     }
 

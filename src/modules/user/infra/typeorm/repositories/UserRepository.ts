@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository{
     }
 
     public async findByCPF(cpf:string):Promise<User>{
-        const all = await this.ormRepository.findOne({relations: ["city"], where:{cpf}});
+        const all = await this.ormRepository.findOne({relations: ["city"], where:{cpf}});   
         return all;
     }
 

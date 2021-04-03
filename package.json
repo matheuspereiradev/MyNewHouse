@@ -5,6 +5,7 @@
   "repository": "https://github.com/matheuspereiradev/MyNewHouse.git",
   "author": "matheus <matheuslima20111997@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "private": false,
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/server",
