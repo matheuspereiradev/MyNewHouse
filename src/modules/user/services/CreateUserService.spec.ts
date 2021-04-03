@@ -120,7 +120,7 @@ describe("Test Service CreateUser",()=>{
             birthDate:new Date(),
             password:"321",
             street:"rua das orquideas",
-            cpf:"1267834",
+            cpf:"00102354388",
             cnpj:"",
             houseNumber:12,
             district:"sao jose",
@@ -178,4 +178,50 @@ describe("Test Service CreateUser",()=>{
             idCity:1
         })).rejects.toBeInstanceOf(Erro);
     });
+
+    it(" should not be able to create a new user whith a duplicated cpf",async()=>{
+
+        const repositoryFake = new FakeUserRepository();
+        const hashProviderFake = new FakeHashProvider();
+
+        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+
+        await createUserService.execute({
+            name:"Joe Many",
+            email:"joe@email.com",
+            birthDate:new Date(),
+            password:"321",
+            street:"rua das flores",
+            cpf:"",
+            cnpj:"05853056000102",
+            houseNumber:12,
+            district:"RIacho verde",
+            complement:"c",
+            reference:"no bar",
+            income:400,
+            phoneNumber:"8892424740",
+            phoneNumber2:"92435678",
+            idCity:1
+        });
+
+
+        expect(createUserService.execute({
+            name:"Joao Geraldo da Cruz",
+            email:"joemary@email.com",
+            birthDate:new Date(),
+            password:"321",
+            street:"rua das orquideas",
+            cpf:"",
+            cnpj:"05853056000102",
+            houseNumber:12,
+            district:"sao jose",
+            complement:"b",
+            reference:"na esquina",
+            income:900,
+            phoneNumber:"00000000",
+            phoneNumber2:"92435678",
+            idCity:1
+        })).rejects.toBeInstanceOf(Erro);
+    });
+    
 })
