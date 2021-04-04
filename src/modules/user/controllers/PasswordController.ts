@@ -11,7 +11,8 @@ class PasswordController {
         
         const recoveryPassword = container.resolve(RecoveryPassword);
 
-        await recoveryPassword.sendRecoveryMail({email});
+        const link = await recoveryPassword.sendRecoveryMail({email});
+        console.log(link);
 
         return response.status(200).json({"status":"email sended"});
     }
@@ -22,6 +23,8 @@ class PasswordController {
 
         email = email.toString();
         const id = code.toString();
+
+        //TODO fazer as variaveis apontarem pro link de recovery
         
         const recoveryPassword = container.resolve(RecoveryPassword);
 
