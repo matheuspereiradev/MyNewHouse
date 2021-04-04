@@ -6,8 +6,8 @@ import {FakeNodeMailerProvider} from '@shared/infra/providers/mail/fakes/FakeNod
 import Erro from '@shared/errors/AppError';
 import FakeHashProvider from "../infra/providers/HashProvider/fakes/FakeHashProvider";
 
-describe("Test Service CreateUser",()=>{
-    it("should be able to create a new user",async ()=>{
+describe("Test Account Recovery",()=>{
+    it("should be able to send a email to account recovery ",async ()=>{
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
@@ -16,7 +16,7 @@ describe("Test Service CreateUser",()=>{
 
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake);
 
-        const usr = await createUserService.execute({
+        await createUserService.execute({
             name:"Apollo Lima Modesto",
             email:"popo@email.com",
             birthDate:new Date(),
@@ -38,9 +38,9 @@ describe("Test Service CreateUser",()=>{
 
         expect(link).not.toBe("")
 
-    });
+    },10000);
 
-    it("should be able to create a new user",async ()=>{
+    it("should not be able to send a recovery email to a invalid email",async ()=>{
         const repositoryFake = new FakeUserRepository();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
@@ -48,7 +48,7 @@ describe("Test Service CreateUser",()=>{
 
         expect(recoveryPassword.sendRecoveryMail({email:"popo@email.com"})).rejects.toBeInstanceOf(Erro)
 
-    });
+    },10000);
 
     
     
