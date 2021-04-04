@@ -10,23 +10,8 @@ class NodeMailerProvider implements ISendMail {
 
     private client:Transporter;  
 
-    constructor(){
-        nodemailer.createTestAccount().then(account =>{
-            const transporter = nodemailer.createTransport({
-                host:account.smtp.host,
-                port:account.smtp.port,
-                secure:account.smtp.secure,
-                auth:{
-                    user:account.user,
-                    pass:account.pass
-                }
-            });
-
-            this.client = transporter;
-        });
-    }
-
     public async sendEmail(to:string,subject:string,variables:object,model:string):Promise<string>{
+        await this.configureTranporter();
 
         const path = resolve(__dirname,"..","views",model);
         const templateFileContent = fs.readFileSync(path).toString('utf-8');
@@ -43,6 +28,22 @@ class NodeMailerProvider implements ISendMail {
 
         return nodemailer.getTestMessageUrl(msg).toString();
 
+    }
+
+    public async configureTranporter(){
+        await nodemailer.createTestAccount().then(account =>{
+            const transporter = nodemailer.createTransport({
+                host:account.smtp.host,
+                port:account.smtp.port,
+                secure:account.smtp.secure,
+                auth:{
+                    user:account.user,
+                    pass:account.pass
+                }
+            });
+
+            this.client = transporter;
+        });
     }
 }
 

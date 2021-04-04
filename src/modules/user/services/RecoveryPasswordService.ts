@@ -26,16 +26,21 @@ export class RecoveryPassword{
         private userRepository:IUserRepository,
     ){}
 
-    public async sendRecoveryMail({email}:IUserRecoveryPassword):Promise<any>{
+    public async sendRecoveryMail({email}:IUserRecoveryPassword):Promise<string>{
 
         const variables = await this.assemblyRecoveryPasswordVariables(email);
        
-        this.mailProvider.sendEmail(email,EmailConfig.passwordRecovery.title,variables,EmailConfig.passwordRecovery.model);
+        const link = await this.mailProvider.sendEmail(email,EmailConfig.passwordRecovery.title,variables,EmailConfig.passwordRecovery.model);
 
+        return link;
     }
 
     public async assemblyRecoveryPasswordVariables(email:string):Promise<IEmailVariables>{
         const user = await this.userRepository.findByEmail(email);
+
+        if(!user){
+            throw new Erro("Email inválido",1030)
+        }
 
         const variablesRecovery = {
             name:user.name,
