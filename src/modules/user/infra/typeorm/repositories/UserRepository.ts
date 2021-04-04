@@ -20,6 +20,16 @@ class UserRepository implements IUserRepository{
         return user;
     }
 
+    public async patchPassword(id:string,password:string):Promise<User>{
+        const user = await this.ormRepository.findOne({id});
+
+        user.password = password;
+
+        await this.ormRepository.save(user);
+
+        return user;
+    }
+
     public async findByEmail(email:string):Promise<User>{
         const all = await this.ormRepository.findOne({relations: ["city"],where: {email}});
         return all;

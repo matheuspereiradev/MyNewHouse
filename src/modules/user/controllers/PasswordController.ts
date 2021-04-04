@@ -14,7 +14,20 @@ class PasswordController {
         await recoveryPassword.sendRecoveryMail({email});
 
         return response.status(200).json({"status":"email sended"});
+    }
 
+    async changePassword(request: Request, response: Response){
+        let { email } = request.query;
+        const { id } = request.params;
+        const { password } = request.body;
+
+        email = email.toString();
+        
+        const recoveryPassword = container.resolve(RecoveryPassword);
+
+        await recoveryPassword.changePassword({id,email,password});
+
+        return response.status(200).json({"status":"password changed"});
     }
 
 };

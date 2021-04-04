@@ -3,9 +3,17 @@ import Erro from '@shared/errors/AppError';
 import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
 import EmailConfig from '@config/email';
 import IUserRepository from '../IRepositories/IUserRepository';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
+import { User } from '../infra/typeorm/entities/User';
 
-interface IUserRecoveryPassword{
+interface IUserRequestRecoveryPassword{
     email:string  
+}
+
+interface IUserChangePassword{
+    id:string,
+    email:string,
+    password:string  
 }
 
 interface IEmailVariables{
@@ -24,9 +32,12 @@ export class RecoveryPassword{
 
         @inject('UserRepository')
         private userRepository:IUserRepository,
+
+        @inject('HashProvider')
+        private hashProvider:IHashProvider
     ){}
 
-    public async sendRecoveryMail({email}:IUserRecoveryPassword):Promise<string>{
+    public async sendRecoveryMail({email}:IUserRequestRecoveryPassword):Promise<string>{
 
         const variables = await this.assemblyRecoveryPasswordVariables(email);
        
@@ -39,7 +50,7 @@ export class RecoveryPassword{
         const user = await this.userRepository.findByEmail(email);
 
         if(!user){
-            throw new Erro("Email inválido",1030)
+            throw new Erro("Invalid Email",1030)
         }
 
         const variablesRecovery = {
@@ -50,6 +61,32 @@ export class RecoveryPassword{
         }
 
         return variablesRecovery;
+    }
+
+    public async changePassword({id,email,password}:IUserChangePassword):Promise<User>{
+        await this.validateEmailId(id,email);
+
+        const hashedPassword = await this.hashPassword(password);
+        
+        const user = await this.userRepository.patchPassword(id,hashedPassword);
+
+        return user;
+    }
+
+    public async validateEmailId(id:string,email:string):Promise<any>{
+        const user = await this.userRepository.findByEmail(email);
+
+        if(!user)
+            throw new Erro("invalid Email or ID",1031)
+        
+        if(user.id!==id)
+            throw new Erro("invalid Email or ID",1032)
+    }
+
+    public async hashPassword(password:string):Promise<string>{
+        const hashedPassword = await this.hashProvider.genarateHash(password);
+
+        return hashedPassword;
     }
 
 }

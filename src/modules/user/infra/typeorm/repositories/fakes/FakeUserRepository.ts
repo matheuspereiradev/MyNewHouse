@@ -17,6 +17,18 @@ class FakeUserRepository implements IUserRepository{
         return user;
     }
 
+    public async patchPassword(id:string,password:string):Promise<User>{
+        const user =  new User(); 
+        return user;
+
+        /*Object.assign(user,{password})
+        
+        this.users.push(user)
+
+        return user;*/
+        
+    }
+
     public async findByEmail(email:string):Promise<User>{ 
                
         const foundUser = this.users.find(usr => usr.email === email,);

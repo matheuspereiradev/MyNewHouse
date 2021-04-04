@@ -8,4 +8,5 @@ export default interface IUserRepository{
     findByCPF(cpf:string):Promise<User>;
     findByCNPJ(cnpj:string):Promise<User>;
     findAll():Promise<Array<User>>;
+    patchPassword(id:string,password:string):Promise<User>;
 }
