@@ -4,12 +4,12 @@ import { User } from '@modules/user/infra/typeorm/entities/User';
 import { container } from 'tsyringe'
 import { RecoveryPassword } from '@modules/user/services/RecoveryPasswordService';
 
-class UserController {
+class PasswordController {
 
     async recoveryPassword(request: Request, response: Response) {
         const { email } = request.body;
         
-        const recoveryPassword = new RecoveryPassword();
+        const recoveryPassword = container.resolve(RecoveryPassword);
 
         const link = await recoveryPassword.sendRecoveryMail({email})
         console.log(link);
@@ -20,4 +20,4 @@ class UserController {
 
 };
 
-export { UserController };
+export { PasswordController };

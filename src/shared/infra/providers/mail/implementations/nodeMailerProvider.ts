@@ -45,3 +45,5 @@ class NodeMailerProvider implements ISendMail {
 
     }
 }
+
+export default NodeMailerProvider;

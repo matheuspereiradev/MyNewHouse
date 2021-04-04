@@ -4,6 +4,7 @@ export default{
     },
     passwordRecovery:{
         title:"Recuperação de senha",
-        model:"recoveryMail.hbs"
+        model:"recoveryPassword.hbs",
+        recoveryLink:"localhost"
     }
 }
