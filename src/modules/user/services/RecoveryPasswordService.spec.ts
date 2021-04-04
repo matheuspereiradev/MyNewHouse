@@ -14,7 +14,7 @@ describe("Test Account Recovery",()=>{
 
         const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
 
-        const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake);
+        const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
 
         await createUserService.execute({
             name:"Apollo Lima Modesto",
@@ -43,8 +43,9 @@ describe("Test Account Recovery",()=>{
     it("should not be able to send a recovery email to a invalid email",async ()=>{
         const repositoryFake = new FakeUserRepository();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
+        const hashProviderFake = new FakeHashProvider();
 
-        const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake);
+        const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
 
         expect(recoveryPassword.sendRecoveryMail({email:"popo@email.com"})).rejects.toBeInstanceOf(Erro)
 

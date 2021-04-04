@@ -64,6 +64,7 @@ export class RecoveryPassword{
     }
 
     public async changePassword({id,email,password}:IUserChangePassword):Promise<User>{
+        
         await this.validateEmailId(id,email);
 
         const hashedPassword = await this.hashPassword(password);
@@ -74,8 +75,8 @@ export class RecoveryPassword{
     }
 
     public async validateEmailId(id:string,email:string):Promise<any>{
-        const user = await this.userRepository.findByEmail(email);
 
+        const user = await this.userRepository.findByEmail(email);
         if(!user)
             throw new Erro("invalid Email or ID",1031)
         

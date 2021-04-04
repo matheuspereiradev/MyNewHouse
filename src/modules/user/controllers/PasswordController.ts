@@ -17,11 +17,11 @@ class PasswordController {
     }
 
     async changePassword(request: Request, response: Response){
-        let { email } = request.query;
-        const { id } = request.params;
+        let { email,code } = request.query;
         const { password } = request.body;
 
         email = email.toString();
+        const id = code.toString();
         
         const recoveryPassword = container.resolve(RecoveryPassword);
 

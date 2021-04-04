@@ -5,6 +5,6 @@ export default{
     passwordRecovery:{
         title:"Recuperação de senha",
         model:"recoveryPassword.hbs",
-        recoveryLink:"localhost"
+        recoveryLink:"http://localhost:8080/"
     }
 }
