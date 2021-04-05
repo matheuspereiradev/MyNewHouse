@@ -9,6 +9,7 @@ import EmailConfig from '@config/email';
 
 interface IUserInterface{
     name:string, 
+    surname:string,
     email:string, 
     birthDate:Date, 
     password:string, 
@@ -45,17 +46,17 @@ class CreateUserService {
         private hashProvider:IHashProvider
     ){}
 
-    public async execute({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
+    public async execute({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
 
         await this.validateDocument(cpf,cnpj);
         await this.validateEmail(email);        
 
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.create({
-            name, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
+            name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
         });
 
-        const link = await this.sendWelcomeMail({email, name, surname:"NAO IMPLANTADO"});
+        const link = await this.sendWelcomeMail({email, name, surname});
         console.log(link)
 
         return user;

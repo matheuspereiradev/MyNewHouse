@@ -55,6 +55,7 @@ export class RecoveryPassword{
 
         const variablesRecovery = {
             name:user.name,
+            surname:user.surname,
             date:new Date(),
             recoveryLink:EmailConfig.passwordRecovery.recoveryLink,
             id:user.id

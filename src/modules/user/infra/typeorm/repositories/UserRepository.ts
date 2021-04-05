@@ -12,8 +12,8 @@ class UserRepository implements IUserRepository{
         this.ormRepository = getRepository(User)
     }
 
-    public async create({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:ICreateUserDTO):Promise<User>{
-        const user =  this.ormRepository.create({name, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity});
+    public async create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:ICreateUserDTO):Promise<User>{
+        const user =  this.ormRepository.create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity});
 
         await this.ormRepository.save(user);
 
