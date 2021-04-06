@@ -12,12 +12,13 @@ describe("Test Account Recovery",()=>{
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
 
         await createUserService.execute({
-            name:"Apollo Lima Modesto",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"popo@email.com",
             birthDate:new Date(),
             password:"321",
@@ -56,12 +57,13 @@ describe("Test Account Recovery",()=>{
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
 
         const user = await createUserService.execute({
-            name:"Apollo Lima Modesto",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"popo@email.com",
             birthDate:new Date(),
             password:"321",
@@ -110,12 +112,13 @@ describe("Test Account Recovery",()=>{
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
 
         const user = await createUserService.execute({
-            name:"Apollo Lima Modesto",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"popo@email.com",
             birthDate:new Date(),
             password:"321",

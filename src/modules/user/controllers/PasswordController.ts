@@ -12,8 +12,7 @@ class PasswordController {
         const recoveryPassword = container.resolve(RecoveryPassword);
 
         const link = await recoveryPassword.sendRecoveryMail({email});
-        console.log(link);
-
+        
         return response.status(200).json({"status":"email sended"});
     }
 

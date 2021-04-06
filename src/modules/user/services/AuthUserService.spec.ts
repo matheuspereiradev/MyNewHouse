@@ -4,18 +4,22 @@ import { FakeUserRepository } from "../infra/typeorm/repositories/fakes/FakeUser
 import { CreateUserService } from "./CreateUserService"
 import Erro from '@shared/errors/AppError';
 import FakeHashProvider from "../infra/providers/HashProvider/fakes/FakeHashProvider";
+import { FakeNodeMailerProvider } from "@shared/infra/providers/mail/fakes/FakeNodeMailerProvider";
 
 describe("Test service of Auth service", () => {
 
     it("Can create a JWT", async () => {
         const fakeRepository = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
+
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,fakeRepository, hashProviderFake);
 
         const authService = new AuthUserService(fakeRepository, hashProviderFake);
-        const createUserService = new CreateUserService(fakeRepository, hashProviderFake);
 
         const { email, id } = await createUserService.execute({
-            name: "Abduh Lahn Xankahr",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email: "abduh@mail.com",
             birthDate: new Date(),
             password: "1234",
@@ -51,12 +55,14 @@ describe("Test service of Auth service", () => {
     it("Cannot create a JWT with a invalid password", async () => {
         const fakeRepository = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
-
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
+        
         const authService = new AuthUserService(fakeRepository, hashProviderFake);
-        const createUserService = new CreateUserService(fakeRepository, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,fakeRepository, hashProviderFake);
 
         const { email, id,password } = await createUserService.execute({
-            name: "Abduh Lahn Xankahr",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email: "abduh@mail.com",
             birthDate: new Date(),
             password: "1234",

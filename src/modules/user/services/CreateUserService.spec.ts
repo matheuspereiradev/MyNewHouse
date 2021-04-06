@@ -3,16 +3,20 @@ import {CreateUserService} from "../services/CreateUserService";
 import {FakeUserRepository} from "../infra/typeorm/repositories/fakes/FakeUserRepository";
 import Erro from '@shared/errors/AppError';
 import FakeHashProvider from "../infra/providers/HashProvider/fakes/FakeHashProvider";
+import { FakeNodeMailerProvider } from "@shared/infra/providers/mail/fakes/FakeNodeMailerProvider";
 
 describe("Test Service CreateUser",()=>{
     it("should be able to create a new user",async ()=>{
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
+
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         const usr = await createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"jo@email.com",
             birthDate:new Date(),
             password:"321",
@@ -39,10 +43,13 @@ describe("Test Service CreateUser",()=>{
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
+
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         await createUserService.execute({
-            name:"Joe Many",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"joe@email.com",
             birthDate:new Date(),
             password:"321",
@@ -61,7 +68,8 @@ describe("Test Service CreateUser",()=>{
 
 
         expect(createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"joe@email.com",
             birthDate:new Date(),
             password:"321",
@@ -83,11 +91,13 @@ describe("Test Service CreateUser",()=>{
 
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         await expect(createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"jo@email.com",
             birthDate:new Date(),
             password:"321",
@@ -110,12 +120,14 @@ describe("Test Service CreateUser",()=>{
 
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
 
         await expect(createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"jo@email.com",
             birthDate:new Date(),
             password:"321",
@@ -138,11 +150,13 @@ describe("Test Service CreateUser",()=>{
 
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         await createUserService.execute({
-            name:"Joe Many",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"joe@email.com",
             birthDate:new Date(),
             password:"321",
@@ -161,7 +175,8 @@ describe("Test Service CreateUser",()=>{
 
 
         expect(createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"joemary@email.com",
             birthDate:new Date(),
             password:"321",
@@ -183,11 +198,13 @@ describe("Test Service CreateUser",()=>{
 
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
+        const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(repositoryFake, hashProviderFake);
+        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
 
         await createUserService.execute({
-            name:"Joe Many",
+            name:"Apollo",
+            surname:"Lima Modesto",
             email:"joe@email.com",
             birthDate:new Date(),
             password:"321",
@@ -206,7 +223,8 @@ describe("Test Service CreateUser",()=>{
 
 
         expect(createUserService.execute({
-            name:"Joao Geraldo da Cruz",
+            name:"Joao",
+            surname:"Lima",
             email:"joemary@email.com",
             birthDate:new Date(),
             password:"321",

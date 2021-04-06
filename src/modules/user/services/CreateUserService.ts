@@ -56,8 +56,7 @@ class CreateUserService {
             name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
         });
 
-        const link = await this.sendWelcomeMail({email, name, surname});
-        console.log(link)
+        await this.sendWelcomeMail({email, name, surname});
 
         return user;
     }
