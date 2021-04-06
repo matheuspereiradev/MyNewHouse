@@ -8,7 +8,7 @@
 - ~~deve recuperar a senha~~
 - após uma hora da solicitação o link deve expirar
 
-#### LOGIN
+#### ✓ LOGIN
 
 - ~~deve se criar uma sessão para o usuário mediante login e senha~~
 
@@ -35,16 +35,21 @@
 ---
 ## PLANOS
 
-#### DEFINIR PLANO DEFAULT FREE
+#### ✓ DEFINIR PLANO DEFAULT FREE
 
-- TODOS usuários devem ser associados a um plano
-- por padrão esse deve ser o FREE
+- ~~TODOS usuários devem ser associados a um plano~~
+- ~~por padrão esse deve ser o FREE~~
 
 #### COMPRAR PLANO
 
 - usuário deve poder assinar um novo plano
 - ele deve poder pagar por esse plano por meio do sistema em cartão ou pix
-  
+- cada plano deve ter uma quantidade mensal de boost
+
+#### CADASTRAR PLANO
+
+- administrador deve poder cadastrar planos
+
 ---
 ## MODULO DE IMOVEIS
 
@@ -94,20 +99,3 @@
 
 - o usuário pode fazer cotação de um imovel com a caixa por meio do sistema
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-
----
-plano
-
-- nome
-- qtImagens
-- qtAnuncios
-- qtBoosts
-- qtVideos
-- valorMensal
