@@ -35,6 +35,7 @@ describe("Test Service CreateUser",()=>{
 
         expect(usr).toHaveProperty("id");
         expect(usr.cpf).toBe("50989126013")
+        expect(usr.idPlan).toBe(1)
 
     },10000);
 

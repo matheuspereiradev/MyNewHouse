@@ -21,6 +21,7 @@
 - ~~usuário deve poder se cadastrar no sistema~~
 - ~~deve enviar um email de boas vindas~~
 - usuário pode alterar seu avatar
+- deve poder cadastrar escolhendo o plano
 - ~~adicionar sobrenome~~
 
 #### CANCELAR ASSINATURA
