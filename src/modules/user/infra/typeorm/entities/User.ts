@@ -1,6 +1,7 @@
-import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm"
-import {v4 as uuid} from 'uuid'
-import { City } from "@modules/localization/infra/typeorm/entities/City"
+import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
+import {v4 as uuid} from 'uuid';
+import { City } from "@modules/localization/infra/typeorm/entities/City";
+import configUser from '@config/user'
 
 @Entity("tb_user")
 class User{
@@ -74,8 +75,10 @@ class User{
 
     constructor(){
         if(!this.id){
-            this.id = uuid()
+            this.id = uuid();
+            this.idPlan = configUser.plan.defaultPlan;
         }
+
     }
 }
 
