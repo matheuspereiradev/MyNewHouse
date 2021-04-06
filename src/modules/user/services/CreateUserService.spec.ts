@@ -36,7 +36,7 @@ describe("Test Service CreateUser",()=>{
         expect(usr).toHaveProperty("id");
         expect(usr.cpf).toBe("50989126013")
 
-    });
+    },10000);
 
     it(" should not be able to create a new user whith a duplicated email",async()=>{
 
@@ -85,7 +85,7 @@ describe("Test Service CreateUser",()=>{
             phoneNumber2:"92435678",
             idCity:1
         })).rejects.toBeInstanceOf(Erro);
-    });
+    },10000);
 
     it(" should not be able to create a new user whithout a CNPJ or CPF",async()=>{
 
@@ -114,7 +114,7 @@ describe("Test Service CreateUser",()=>{
             idCity:1
         })).rejects.toBeInstanceOf(Erro);
 
-    });
+    },10000);
 
     it(" should not be able to create a new user wrong CPF",async()=>{
 
@@ -144,7 +144,7 @@ describe("Test Service CreateUser",()=>{
             idCity:1
         })).rejects.toBeInstanceOf(Erro);
 
-    });
+    },10000);
 
     it(" should not be able to create a new user whith a duplicated cpf",async()=>{
 
@@ -192,7 +192,7 @@ describe("Test Service CreateUser",()=>{
             phoneNumber2:"92435678",
             idCity:1
         })).rejects.toBeInstanceOf(Erro);
-    });
+    },10000);
 
     it(" should not be able to create a new user whith a duplicated cpf",async()=>{
 
