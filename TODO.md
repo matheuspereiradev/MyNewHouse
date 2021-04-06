@@ -40,6 +40,10 @@
 - ~~TODOS usuários devem ser associados a um plano~~
 - ~~por padrão esse deve ser o FREE~~
 
+#### LISTAR PLANOS
+
+- sistema deve prover uma lista com todos os planos ativos
+
 #### COMPRAR PLANO
 
 - usuário deve poder assinar um novo plano

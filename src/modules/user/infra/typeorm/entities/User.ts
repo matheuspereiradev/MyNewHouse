@@ -53,6 +53,9 @@ class User{
     @Column({name:"phonenumber_2"})
     phoneNumber2:string;
 
+    @Column({name:"id_plan"})
+    idPlan:number;
+
     @Column({name:"id_city"})
     idCity:number;
 
