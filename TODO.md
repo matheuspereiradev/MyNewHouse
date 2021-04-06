@@ -19,9 +19,9 @@
 #### CADASTRAR NO SISTEMA
 
 - ~~usuário deve poder se cadastrar no sistema~~
-- deve enviar um email de boas vindas
+- ~~deve enviar um email de boas vindas~~
 - usuário pode alterar seu avatar
-- adicionar sobrenome
+- ~~adicionar sobrenome~~
 
 #### CANCELAR ASSINATURA
 
