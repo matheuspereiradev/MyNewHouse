@@ -21,12 +21,14 @@ export class createTableBillings1617822537876 implements MigrationInterface {
                 {
                     name:"digitable_line",
                     type:"varchar",
-                    length:"70"
+                    length:"70",
+                    isNullable:true
                 },
                 {
                     name:"payment_link",
                     type:"varchar",
-                    length:"150"
+                    length:"150",
+                    isNullable:true
                 },
                 {
                     name:"our_number",
@@ -35,7 +37,8 @@ export class createTableBillings1617822537876 implements MigrationInterface {
                 },
                 {
                     name:"payment_day",
-                    type:"timestamp"
+                    type:"timestamp",
+                    isNullable:true
                 },
                 {
                     name:"id_user",
