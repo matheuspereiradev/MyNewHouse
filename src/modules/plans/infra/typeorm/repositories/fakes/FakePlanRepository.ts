@@ -3,24 +3,20 @@ import { getRepository, Repository } from 'typeorm';
 import {Plans} from '@modules/plans/infra/typeorm/entities/Plan';
 import IPlanRepository from '@modules/plans/IRepositories/IPlanRepository';
 
-class PlanRepository implements IPlanRepository{
+class FakePlanRepository implements IPlanRepository{
 
-    private ormRepository:Repository<Plans>;
-
-    constructor(){
-        this.ormRepository = getRepository(Plans)
-    }
+    private plans:Plans [] = []
 
     public async findByID(id:number):Promise<Plans>{
-        const all = await this.ormRepository.findOne({where: {id}});
+        const all = this.plans.find(plan => plan.id === id,);;
         return all;
     };
     public async findAll():Promise<Array<Plans>>{
-        const all = await this.ormRepository.find();
+        const all = this.plans;
         return all;
     }
 
 
 }
 
-export {PlanRepository}
+export {FakePlanRepository}
