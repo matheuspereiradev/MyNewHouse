@@ -32,7 +32,7 @@ class Billing{
 
     @OneToOne(type=>Plans,plan=>plan.id)
     @JoinColumn({name:"id_product"})
-    plans:Plans;
+    plan:Plans;
 
     @Column({name:"id_product"})
     idProduct:number;
