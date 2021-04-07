@@ -44,13 +44,17 @@
 #### LISTAR PLANOS
 
 - ~~psistema deve prover uma lista com todos os planos ativos~~
-- sistema deve listar detalhes de um plano específico
+- ~~sistema deve listar detalhes de um plano específico~~
 
 #### COMPRAR PLANO
 
 - usuário deve poder assinar um novo plano
 - ele deve poder pagar por esse plano por meio do sistema em cartão ou pix
 - cada plano deve ter uma quantidade mensal de boost
+
+#### [ERROR] VALIDAR ID DO FIND
+
+- Validar quando enviar input inválido
 
 #### CADASTRAR PLANO
 

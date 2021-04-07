@@ -13,9 +13,9 @@ class PlanController {
     }
 
     async find(request: Request, response: Response) {
-        const {id} = request.params
+        const id = parseInt(request.params.id)
         const planRepository = new PlanRepository();
-
+        
         const all = await planRepository.findByID(id)
         return response.status(200).json(all)
     }

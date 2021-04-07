@@ -15,6 +15,7 @@ class PlanRepository implements IPlanRepository{
         const all = await this.ormRepository.findOne({where: {id}});
         return all;
     };
+
     public async findAll():Promise<Array<Plans>>{
         const all = await this.ormRepository.find();
         return all;
