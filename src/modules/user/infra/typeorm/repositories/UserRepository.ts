@@ -31,26 +31,26 @@ class UserRepository implements IUserRepository{
     }
 
     public async findByEmail(email:string):Promise<User>{
-        const all = await this.ormRepository.findOne({relations: ["city"],where: {email}});
+        const all = await this.ormRepository.findOne({relations: ["city","plan"],where: {email}});
         return all;
     };
 
     public async findByID(id:string):Promise<User>{
-        const all = await this.ormRepository.findOne({relations: ["city"], where: {id}});
+        const all = await this.ormRepository.findOne({relations: ["city","plan"], where: {id}});
         return all;
     };
     public async findAll():Promise<Array<User>>{
-        const all = await this.ormRepository.find({relations: ["city"]});
+        const all = await this.ormRepository.find({relations: ["city","plan"]});
         return all;
     }
 
     public async findByCNPJ(cnpj:string):Promise<User>{
-        const all = await this.ormRepository.findOne({relations: ["city"], where:{cnpj}});
+        const all = await this.ormRepository.findOne({relations: ["city","plan"], where:{cnpj}});
         return all;
     }
 
     public async findByCPF(cpf:string):Promise<User>{
-        const all = await this.ormRepository.findOne({relations: ["city"], where:{cpf}});   
+        const all = await this.ormRepository.findOne({relations: ["city","plan"], where:{cpf}});   
         return all;
     }
 

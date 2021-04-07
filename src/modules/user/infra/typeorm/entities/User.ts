@@ -2,6 +2,7 @@ import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne
 import {v4 as uuid} from 'uuid';
 import { City } from "@modules/localization/infra/typeorm/entities/City";
 import configUser from '@config/user'
+import { Plans } from "@modules/plans/infra/typeorm/entities/Plan";
 
 @Entity("tb_user")
 class User{
@@ -53,6 +54,10 @@ class User{
 
     @Column({name:"phonenumber_2"})
     phoneNumber2:string;
+
+    @OneToOne(type=>Plans,plan=>plan.id)
+    @JoinColumn({name:"id_plan"})
+    plan:Plans
 
     @Column({name:"id_plan"})
     idPlan:number;
