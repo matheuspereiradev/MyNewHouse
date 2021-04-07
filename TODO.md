@@ -49,6 +49,7 @@
 #### COMPRAR PLANO
 
 - usuário deve poder assinar um novo plano
+- deve-se gerar um pagamento no sistema
 - ele deve poder pagar por esse plano por meio do sistema em cartão ou pix
 - cada plano deve ter uma quantidade mensal de boost
 
