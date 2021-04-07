@@ -1,7 +1,7 @@
 import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm"
 
 @Entity("tb_plans")
-class User{
+class Plans{
 
     @PrimaryColumn()
     readonly id:number;
@@ -29,4 +29,4 @@ class User{
 
 }
 
-export{User};
+export{Plans};
