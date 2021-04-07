@@ -43,7 +43,8 @@
 
 #### LISTAR PLANOS
 
-- sistema deve prover uma lista com todos os planos ativos
+- ~~psistema deve prover uma lista com todos os planos ativos~~
+- sistema deve listar detalhes de um plano específico
 
 #### COMPRAR PLANO
 

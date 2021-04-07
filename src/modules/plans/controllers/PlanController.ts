@@ -13,8 +13,12 @@ class PlanController {
         return response.status(200).json(all)
     }
 
-    async create(request: Request, response: Response) {
-        
+    async find(request: Request, response: Response) {
+        const {id} = request.params
+        const planRepository = new PlanRepository();
+
+        const all = await planRepository.findByID(id)
+        return response.status(200).json(all)
     }
 
 };
