@@ -19,7 +19,7 @@ class FakeUserRepository implements IUserRepository{
 
     public async patchPassword(id:string,password:string):Promise<User>{
         
-        let index =  this.users.findIndex(usr=>usr.id === id,)
+        const index =  this.users.findIndex(usr=>usr.id === id)
 
         const user = this.users[index];
         
