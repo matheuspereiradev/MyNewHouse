@@ -3,7 +3,7 @@ export default interface ICreateBillingDTO{
     digitableLine:string,
     paymentLink:string,
     ourNumber:string,
-    paymentDay:string,
+    paymentDay:Date,
     billingValue:number,
     expirationDate:Date,
     idProduct:number,

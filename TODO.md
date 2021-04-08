@@ -60,6 +60,20 @@
 #### CADASTRAR PLANO
 
 - administrador deve poder cadastrar planos
+---
+
+## MODULO BOLETOS
+
+#### GERAR BOLETOS EM API EXTERNA
+
+- gerar boleto em uma API externa
+
+#### SALVAR DADOS DO BOLETO
+
+
+
+#### REALIZAR PAGAMENTO
+
 
 ---
 ## MODULO DE IMOVEIS
