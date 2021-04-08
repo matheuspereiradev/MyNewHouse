@@ -3,7 +3,8 @@ import { routesSession } from '@modules/user/infra/http/routes/session.routes';
 import { routesUser } from '@modules/user/infra/http/routes/user.routes';
 import { routeForgotPassword } from '@modules/user/infra/http/routes/forgotpassword.routes';
 import { routesLocation } from '@modules/localization/infra/http/routes/routesLocation.routes';
-import { routesPlan } from '@modules/plans/infra/http/plans.routes'
+import { routesPlan } from '@modules/plans/infra/http/plans.routes';
+import { routeBilling } from '@modules/billing/infra/http/billings.routes'
 import ensureAuthenticated from  '@modules/user/infra/http/middleware/ensureAuthenticated';
 
 const routes = Router();
@@ -19,5 +20,6 @@ routes.use('/city',routesLocation);
 
 routes.use('/plan',routesPlan);
 
+routes.use('/bill',routeBilling);
 
 export {routes};
