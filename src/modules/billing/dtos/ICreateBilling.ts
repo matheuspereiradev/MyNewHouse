@@ -6,6 +6,6 @@ export default interface ICreateBillingDTO{
     paymentDay:Date,
     billingValue:number,
     expirationDate:Date,
-    idProduct:number,
-    idUser:string
+    cpf:string,
+    cnpj:string
 }

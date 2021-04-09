@@ -1,6 +1,5 @@
 import { Billing } from '@modules/billing/infra/typeorm/entities/Billing';
 import ICreateBillingDTO from '@modules/billing/dtos/ICreateBilling';
-import { UpdateResult } from 'typeorm';
 
 export default interface IBillingRepository{
     create(data:ICreateBillingDTO):Promise<Billing>;
