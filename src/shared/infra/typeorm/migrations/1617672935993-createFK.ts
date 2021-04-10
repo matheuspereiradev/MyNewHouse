@@ -15,6 +15,7 @@ export class createFK1617672935993 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey("tb_user","fk_user_plans")
     }
 
 }
