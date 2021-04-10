@@ -13,7 +13,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@types/nodemailer": "^6.4.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -26,8 +25,7 @@
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.5.0",
     "typeorm": "^0.2.31",
-    "uuid": "^8.3.2",
-    "uuidv4": "^6.2.7"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -36,6 +34,7 @@
     "@types/jest": "^26.0.22",
     "@types/jsonwebtoken": "^8.5.1",
     "@types/mercadopago": "^1.5.3",
+    "@types/nodemailer": "^6.4.1",
     "@types/uuid": "^8.3.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",

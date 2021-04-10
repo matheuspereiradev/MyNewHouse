@@ -1,3 +1,5 @@
+# MOVIDO PARA O TRELLO
+
 # TODO LIST
 
 ## MODULO DE USUÁRIO
@@ -21,7 +23,6 @@
 - ~~usuário deve poder se cadastrar no sistema~~
 - ~~deve enviar um email de boas vindas~~
 - usuário pode alterar seu avatar
-- deve poder cadastrar escolhendo o plano
 - ~~adicionar sobrenome~~
 
 #### CANCELAR ASSINATURA
@@ -43,8 +44,8 @@
 
 #### LISTAR PLANOS
 
-- ~~psistema deve prover uma lista com todos os planos ativos~~
-- ~~sistema deve listar detalhes de um plano específico~~
+- sistema deve prover uma lista com todos os planos ativos
+- sistema deve listar detalhes de um plano específico
 
 #### COMPRAR PLANO
 
@@ -56,23 +57,6 @@
 #### [ERROR] VALIDAR ID DO FIND
 
 - Validar quando enviar input inválido
-
-#### CADASTRAR PLANO
-
-- administrador deve poder cadastrar planos
----
-
-## MODULO BOLETOS
-
-#### GERAR BOLETOS EM API EXTERNA
-
-- gerar boleto em uma API externa
-
-#### SALVAR DADOS DO BOLETO
-
-
-
-#### REALIZAR PAGAMENTO
 
 
 ---
@@ -106,7 +90,7 @@
 #### LISTAR IMÓVEIS
 
 -  usuário deve poder filtrar imóveis
--  deve ser exibida lista com todos os imóveis
+-  deve ser exibida lista com todos os imóveis de um anunciantes
 -  deve ser exibida informações detalhadas de um imóvel
 
 #### DENUNCIAR ANUNCIOS
@@ -118,9 +102,27 @@
 - apos 4 anuncios removidos o usuário tem sua conta suspensa
 
 ---
+
+# FEATURES PARA O FUTURO
+
+#### CADASTRAR PLANO
+
+- administrador deve poder cadastrar planos
+
 ## COTAÇÕES
 
 #### FAZER COTAÇÃO
 
 - o usuário pode fazer cotação de um imovel com a caixa por meio do sistema
 
+## MODULO BOLETOS [em espera]
+
+#### GERAR BOLETOS EM API EXTERNA
+
+- gerar boleto em uma API externa
+
+#### SALVAR DADOS DO BOLETO
+
+
+
+#### REALIZAR PAGAMENTO
