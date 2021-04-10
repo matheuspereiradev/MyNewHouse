@@ -8,13 +8,16 @@ import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
 import NodeMeiler from '@shared/infra/providers/mail/implementations/nodeMailerProvider';
 import IBillingRepository from '@modules/billing/IRepositories/IBillingRepository';
 import {BillingRepository} from '@modules/billing/infra/typeorm/repositories/BillingRepository';
-import IGenerateCharge from '@modules/billing/infra/providers/charges/model/IGenerateCharge';
+import IGenerateCharge from '@modules/billing/infra/providers/charges/model/IGenerateCreditCardCharge';
 import {GenerateChargeFake} from '@modules/billing/infra/providers/charges/fakes/GenerateChargeFake'
+import IPlanRepository from '@modules/plans/IRepositories/IPlanRepository';
+import {PlanRepository} from '@modules/plans/infra/typeorm/repositories/PlanRepository'
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<IHashProvider>('HashProvider', bcryptHashProvider);
 container.registerSingleton<ISendMail>('SendMail',NodeMeiler);
 container.registerSingleton<IBillingRepository>('BillingRepository',BillingRepository);
+container.registerSingleton<IPlanRepository>('PlanRepository',PlanRepository);
 
 //TODO COLOCAR GERADOR CORRETO
 container.registerSingleton<IGenerateCharge>('GenerateRemoteCharge',GenerateChargeFake);
