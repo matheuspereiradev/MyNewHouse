@@ -12,7 +12,7 @@ https://trello.com/b/bEHRIc8h/projeto-lar-doce-lar
 - CHARGES
 - LOCATION
 - PLANS
-- HOUSES
+- PROPERTY
 - PAYMENTSIMULATION
 
 ## FERRAMENTAS/ BIBLIOTECAS
