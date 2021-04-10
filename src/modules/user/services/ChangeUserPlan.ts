@@ -38,7 +38,7 @@ export class ChangeUserPlan{
     }
 
     public async findPlan(idPlan:number):Promise<Plans>{
-        const plan = await this.planRepository.findByID(idPlan)
+        const plan = await this.planRepository.findByID(idPlan);
 
         if(!plan)
             throw new Erro("Plan not found",1031);
