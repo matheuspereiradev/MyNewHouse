@@ -5,6 +5,6 @@ import { User } from "@modules/user/infra/typeorm/entities/User";
 
 export default interface IGenerateCharge{
     //generateCharge(user:User, plan:Plans, APIToken:string):Promise<ICreateBillingDTO>;
-    generateCreditCardCharge(creditCardData:IGenerateCreditCardPayment,APIToken:string):Promise<ICreateBillingDTO>;
-    generateAPIToken():Promise<string>;
+    //generateCreditCardCharge(creditCardData:IGenerateCreditCardPayment,APIToken:string):Promise<ICreateBillingDTO>;
+    //generateAPIToken():Promise<string>;
 }

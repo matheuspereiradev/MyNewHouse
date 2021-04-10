@@ -1,4 +1,4 @@
-import IGenetateCharge from "../model/IGenerateCharge";
+import IGenetateCharge from "../model/IGenerateCreditCardCharge";
 import Erro from '@shared/errors/AppError';
 import ICreateBillingDTO from "@modules/billing/dtos/ICreateBilling";
 import IGenerateCreditCardPayment from "@modules/billing/dtos/IGenerateCreditCardPayment";

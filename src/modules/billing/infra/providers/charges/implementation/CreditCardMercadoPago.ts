@@ -1,25 +1,13 @@
-import mercadopago from "mercadopago"
+import mercadopago from "mercadopago";
+import IGenerateCharge from "@modules/billing/infra/providers/charges/model/IGenerateCreditCardCharge"
+import ICreditCardPaymentData from "../model/ICreditCardPaymentData";
 
-interface IPaymentData{
-    transactionAmount:number,
-    token:string,
-    description:string,
-    installments:number,
-    paymentMethodId:string,
-    issuer:string,
-    payer:{
-        email:string,
-        docType:string,
-        docNumber:string
-    }
-}
-
-class MercadoPagoIntegration{
+class CreditCardMercadoPago implements IGenerateCharge{
     constructor(){
         mercadopago.configurations.setAccessToken(process.env.MERCADOPAGO_SANDBOX_ACCESSTOKEN);
     }
 
-    public async processPayment(paymentData:IPaymentData):Promise<any>{
+    public async processPayment(paymentData:ICreditCardPaymentData):Promise<any>{
         const payment_data = {
             transaction_amount: paymentData.transactionAmount,
             token: paymentData.token,
@@ -48,8 +36,10 @@ class MercadoPagoIntegration{
               throw new Error(error);
         });
     }
-
+    
     public async getPaymentMethods(){
-        mercadopago.utils.get("/v1/payment_methods");
+      // return await mercadopago.preferences.create();
     }
 }
+
+export {CreditCardMercadoPago}
