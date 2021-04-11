@@ -3,15 +3,13 @@ import {v4 as uuid} from 'uuid';
 import { City } from "@modules/localization/infra/typeorm/entities/City";
 import { ContractType } from "./ContractType";
 import { PropertyType } from "./PropertyType";
+import { User } from "@modules/user/infra/typeorm/entities/User";
 
-@Entity("tb_user")
+@Entity("tb_property")
 class Property{
 
     @PrimaryColumn()
     readonly id:string;
-
-    @Column({name:"id_advertiser"})
-    idAdvertiser:string;
 
     @Column()
     street:string;
@@ -31,6 +29,13 @@ class Property{
     @OneToOne(type=>City,city=>city.id)
     @JoinColumn({name:"id_city"})
     city:City
+
+    @Column({name:"id_advertiser"})
+    idAdvertiser:string;
+
+    @OneToOne(type=>User,usr=>usr.id)
+    @JoinColumn({name:"id_advertiser"})
+    advertiser:User
 
     @Column({name:"id_contract_type"})
     idContractType:number;
