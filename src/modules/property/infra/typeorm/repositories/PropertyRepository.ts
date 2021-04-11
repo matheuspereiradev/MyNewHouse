@@ -16,7 +16,7 @@ class PropertyRepository implements IPropertyRepository{
     }
 
     public async findByID(id:string):Promise<Property>{
-        const result = await this.ormRepository.findOne({id});
+        const result = await this.ormRepository.findOne({relations: ["city","advertiser","contractType","propertyType"], where:{id}});
         return result;
     }
 

@@ -11,14 +11,15 @@ class PropertyController {
         return response.status(200).json(result);
     }
 
-    // async show(request: Request, response: Response) {
-    //     const {state} = request.params;
-    //     const cityRepository = new CityRepository();
-        
-    //     const result = await cityRepository.findByUF(state);
+    async findByID(request: Request, response: Response) {
+        let {id} = request.params;
 
-    //     return response.status(200).json(result);
-    // }
+        const propertyRepository = new PropertyRepository();
+        
+        const result = await propertyRepository.findByID(id);
+
+        return response.status(200).json(result);
+    }
 };
 
 export { PropertyController };
