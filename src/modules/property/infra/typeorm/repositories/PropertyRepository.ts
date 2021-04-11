@@ -20,9 +20,10 @@ class PropertyRepository implements IPropertyRepository{
         return result;
     }
 
-    public async findByAdvertiser(userId:string):Promise<Array<Property>>{
-        const all = await this.ormRepository.find({where:[{idAdvertiser:userId}]});
-        return all;
+    public async findByAdvertiser(userSlug:string):Promise<Array<Property>>{
+        /*const all = await this.ormRepository.();
+        return all;*/
+        return null
     }
 
 }

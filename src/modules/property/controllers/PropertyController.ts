@@ -20,6 +20,8 @@ class PropertyController {
 
         return response.status(200).json(result);
     }
+
+    
 };
 
 export { PropertyController };
