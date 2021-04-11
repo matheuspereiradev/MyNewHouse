@@ -12,12 +12,15 @@ import IGenerateCharge from '@modules/billing/infra/providers/charges/model/IGen
 import {GenerateChargeFake} from '@modules/billing/infra/providers/charges/fakes/GenerateChargeFake'
 import IPlanRepository from '@modules/plans/IRepositories/IPlanRepository';
 import {PlanRepository} from '@modules/plans/infra/typeorm/repositories/PlanRepository'
+import IPropertyRepository from '@modules/property/IRepositories/IPropertyRepository';
+import {PropertyRepository} from '@modules/property/infra/typeorm/repositories/PropertyRepository'
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<IHashProvider>('HashProvider', bcryptHashProvider);
 container.registerSingleton<ISendMail>('SendMail',NodeMeiler);
 container.registerSingleton<IBillingRepository>('BillingRepository',BillingRepository);
 container.registerSingleton<IPlanRepository>('PlanRepository',PlanRepository);
+container.registerSingleton<IPropertyRepository>('PropertyRepository',PropertyRepository);
 
 //TODO COLOCAR GERADOR CORRETO
 container.registerSingleton<IGenerateCharge>('GenerateRemoteCharge',GenerateChargeFake);

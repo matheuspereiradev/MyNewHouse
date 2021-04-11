@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 import IPropertyRepository from '@modules/property/IRepositories/IPropertyRepository';
 import { Property } from '../entities/Property';
+import ICreatePropertyDTO from '@modules/property/dtos/ICreatePropertyDTO';
 
 class PropertyRepository implements IPropertyRepository{
 
@@ -24,6 +25,15 @@ class PropertyRepository implements IPropertyRepository{
         /*const all = await this.ormRepository.();
         return all;*/
         return null
+    }
+
+    public async create(data:ICreatePropertyDTO):Promise<Property>{
+        
+        const property = this.ormRepository.create(data);
+
+        await this.ormRepository.save(property);
+
+        return property;
     }
 
 }

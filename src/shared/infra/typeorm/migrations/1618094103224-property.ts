@@ -55,11 +55,11 @@ export class property1618094103224 implements MigrationInterface {
                 },
                 {
                     name:"latitude",
-                    type:"point"
+                    type:"decimal(10,2)"
                 },
                 {
                     name:"longitude",
-                    type:"point"
+                    type:"decimal(10,2)"
                 },
                 {
                     name:"amount_bathroom",
