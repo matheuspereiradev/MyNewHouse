@@ -71,6 +71,6 @@ describe("Test the change of plan",()=>{
 
         expect(changePlan.execute("85879990-4d56-46c6-8c71-7b7b8d084e62",5)).rejects.toBeInstanceOf(Erro)
 
-    },10000);
+    });
     
 })
