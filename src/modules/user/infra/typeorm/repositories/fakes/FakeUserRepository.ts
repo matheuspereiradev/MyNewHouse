@@ -10,7 +10,7 @@ class FakeUserRepository implements IUserRepository{
     constructor(){
         const user =  new User(); 
 
-        Object.assign(user,{id:"85879990-4d56-46c6-8c71-7b7b8d084e62",name:"usuário padrão",surname:"de teste", email:"teste@teste.com", birthDate:new Date(), password:"123hashed", cpf:"12102545067", cnpj:"", street:"teste", houseNumber:1, district:"teste", complement:"teste", reference:"teste", income:100, phoneNumber:"924470", phoneNumber2:"234567", idCity:1})
+        Object.assign(user,{id:"85879990-4d56-46c6-8c71-7b7b8d084e62",name:"usuário padrão",surname:"de teste", email:"teste@teste.com", birthDate:new Date(), password:"123hashed", cpf:"12102545067", cnpj:"", street:"teste", houseNumber:1, district:"teste", complement:"teste", reference:"teste", income:100, phoneNumber:"924470", phoneNumber2:"234567", idCity:1, idPlan:1})
         
         this.users.push(user)
     }
