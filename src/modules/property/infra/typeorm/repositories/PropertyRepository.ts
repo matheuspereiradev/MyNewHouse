@@ -36,6 +36,10 @@ class PropertyRepository implements IPropertyRepository{
         return property;
     }
 
+    public async countUserProperties(idUser:string):Promise<number>{
+        const count = this.ormRepository.count({where:[{idAdvertiser:idUser}]})
+        return count;
+    }
 }
 
 export {PropertyRepository}
