@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import {PropertyRepository} from '@modules/property/infra/typeorm/repositories/PropertyRepository';
 import { container } from 'tsyringe';
 import { CreatePropertyService } from '../services/CreatePropertyService';
+import { DeletePropertyService } from '../services/DeletePropertyService';
 
 class PropertyController {
 
@@ -32,6 +33,18 @@ class PropertyController {
 
         return response.status(201).json(property);
     }
+
+    async delete(request: Request, response: Response){
+        const {id} = request.params;
+        
+        const deletePropertyService = container.resolve(DeletePropertyService);
+        
+        const property = await deletePropertyService.execute({idAdvertiser:request.user.id,idProperty:id});
+
+        return response.status(200).json(property);
+    }
+
+
     
 };
 

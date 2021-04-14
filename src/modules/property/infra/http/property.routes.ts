@@ -8,5 +8,6 @@ const propertyController = new PropertyController();
 routesProperty.get('/',propertyController.index);
 routesProperty.get('/:id',propertyController.findByID); 
 routesProperty.post('/',ensureAuthenticated,propertyController.create);
+routesProperty.delete('/:id',ensureAuthenticated,propertyController.delete)
 
 export {routesProperty};

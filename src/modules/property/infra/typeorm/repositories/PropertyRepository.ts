@@ -37,8 +37,15 @@ class PropertyRepository implements IPropertyRepository{
     }
 
     public async countUserProperties(idUser:string):Promise<number>{
-        const count = this.ormRepository.count({where:[{idAdvertiser:idUser}]})
+        const count = await this.ormRepository.count({where:[{idAdvertiser:idUser}]})
         return count;
+    }
+
+    public async delete(id:string):Promise<Property>{
+        console.log(id)
+        const property = await this.ormRepository.findOne({where:[{id:id}]});
+        await this.ormRepository.softDelete({id});
+        return property;
     }
 }
 

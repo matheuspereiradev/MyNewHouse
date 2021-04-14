@@ -5,8 +5,9 @@ export default interface IPropertyRepository{
     findAll():Promise<Array<Property>>;
     findByID(id:string):Promise<Property>;
     findByAdvertiser(userID:string):Promise<Array<Property>>;
-    create(data:ICreatePropertyDTO):Promise<Property>;
     countUserProperties(idUser:string):Promise<number>;
+    create(data:ICreatePropertyDTO):Promise<Property>;
+    delete(id:string):Promise<Property>;
     /*
     findByEmail(email:string):Promise<User>;
     findByID(id:string):Promise<User>;

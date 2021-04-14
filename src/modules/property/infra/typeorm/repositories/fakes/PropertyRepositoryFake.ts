@@ -37,6 +37,13 @@ class PropertyRepositoryFake implements IPropertyRepository{
         const count = 2;
         return count;
     }
+
+    public async delete(id:string):Promise<Property>{
+        const index = this.properties.findIndex(prop=>prop.id === id);
+        const prop = this.properties[index];
+        this.properties.splice(index,1)
+        return prop;
+    }
 }
 
 export {PropertyRepositoryFake}

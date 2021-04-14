@@ -12,8 +12,8 @@ class BillingRepository implements IBillingRepository{
         this.ormRepository = getRepository(Billing)
     }
 
-    public async create({barcode,billingValue,digitableLine,expirationDate,idProduct,idUser,ourNumber,paymentDay,paymentLink}:ICreateBillingDTO):Promise<Billing>{
-        const billing =  this.ormRepository.create({barcode,billingValue,digitableLine,expirationDate,idProduct,idUser,ourNumber,paymentDay,paymentLink});
+    public async create({barcode,billingValue,digitableLine,expirationDate,ourNumber,paymentDay,paymentLink}:ICreateBillingDTO):Promise<Billing>{
+        const billing =  this.ormRepository.create({barcode,billingValue,digitableLine,expirationDate,ourNumber,paymentDay,paymentLink});
 
         await this.ormRepository.save(billing);
 
