@@ -8,18 +8,18 @@ import IUserRepository from '@modules/user/IRepositories/IUserRepository';
 import IDeletePropertyDTO from '../dtos/IDeletepropertyDTO';
 
 @injectable()
-class DeletePropertyService {
+class UpdatePropertyService {
 
     constructor(
         @inject('PropertyRepository') 
         private propertyRepository:IPropertyRepository
     ){}
 
-    public async execute(data:IDeletePropertyDTO):Promise<Property> {
+    public async execute(data:Property):Promise<Property> {
 
-        await this.validateUser(data.idAdvertiser,data.idProperty)
+        await this.validateUser(data.idAdvertiser,data.id)
 
-        const property = await this.propertyRepository.delete(data.idProperty);
+        const property = await this.propertyRepository.update(data);
         
         return property;
     }
@@ -29,14 +29,14 @@ class DeletePropertyService {
         const {idAdvertiser} = await this.propertyRepository.findByID(idProperty);
 
         if(!idAdvertiser)
-            throw new Erro("Internal error: property not found",1039)
+            throw new Erro("Internal error: property not found",1041)
 
         if(idUser!==idAdvertiser)
-            throw new Erro("You not have permission to execute this action",1040)
+            throw new Erro("You not is the creator of this property",1042)
     }
 
     
 
 };
 
-export { DeletePropertyService };
+export { UpdatePropertyService };

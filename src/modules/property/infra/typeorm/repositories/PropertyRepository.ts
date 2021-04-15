@@ -42,9 +42,14 @@ class PropertyRepository implements IPropertyRepository{
     }
 
     public async delete(id:string):Promise<Property>{
-        console.log(id)
         const property = await this.ormRepository.findOne({where:[{id:id}]});
         await this.ormRepository.softDelete({id});
+        return property;
+    }
+
+    public async update(data:Property):Promise<Property>{
+        const property = await this.ormRepository.findOne({where:[{id:data.id}]});
+        await this.ormRepository.save(data);
         return property;
     }
 }

@@ -27,7 +27,7 @@ class CreatePropertyService {
     }
 
     public async validateAmountUserProperties(idUser:string):Promise<any>{
-        // console.log(idUser)
+
         const {plan} = await this.userRepository.findByID(idUser);
         const amountUserAds = await this.propertyRepository.countUserProperties(idUser);
 

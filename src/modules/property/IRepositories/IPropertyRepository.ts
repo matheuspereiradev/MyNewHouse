@@ -8,6 +8,7 @@ export default interface IPropertyRepository{
     countUserProperties(idUser:string):Promise<number>;
     create(data:ICreatePropertyDTO):Promise<Property>;
     delete(id:string):Promise<Property>;
+    update(data:Property):Promise<Property>;
     /*
     findByEmail(email:string):Promise<User>;
     findByID(id:string):Promise<User>;
