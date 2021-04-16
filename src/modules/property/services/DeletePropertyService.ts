@@ -26,13 +26,17 @@ class DeletePropertyService {
 
     public async validateUser(idUser:string,idProperty:string):Promise<any>{
         
-        const {idAdvertiser} = await this.propertyRepository.findByID(idProperty);
+        const property = await this.propertyRepository.findByID(idProperty);
 
-        if(!idAdvertiser)
+        if(!property){
             throw new Erro("Internal error: property not found",1039)
+        }
+            
 
-        if(idUser!==idAdvertiser)
+        if(idUser!==property.idAdvertiser){
             throw new Erro("You not have permission to execute this action",1040)
+        }
+            
     }
 
     
