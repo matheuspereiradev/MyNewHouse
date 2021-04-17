@@ -1,7 +1,5 @@
 import "reflect-metadata";
-import {FakeNodeMailerProvider} from '@shared/infra/providers/mail/fakes/FakeNodeMailerProvider'
 import Erro from '@shared/errors/AppError';
-import {FakePlanRepository} from "@modules/plans/infra/typeorm/repositories/fakes/FakePlanRepository"
 import { PropertyRepositoryFake } from "../infra/typeorm/repositories/fakes/PropertyRepositoryFake";
 import { DeletePropertyService } from "./DeletePropertyService";
 
