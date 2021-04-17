@@ -1,5 +1,5 @@
 import {Router,Request,Response} from 'express';
-import {CityController} from '@modules/localization/controllers/ControllerCity'
+import {CityController} from '@modules/localization/controllers/CityController'
 
 const routesLocation = Router();
 const controllerCity = new CityController();
