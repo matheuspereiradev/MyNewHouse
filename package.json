@@ -1,6 +1,6 @@
 {
   "name": "mynewhouse",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "server.ts",
   "repository": "https://github.com/matheuspereiradev/MyNewHouse.git",
   "author": "matheus <matheuslima20111997@gmail.com>",

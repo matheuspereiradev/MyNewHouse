@@ -17,6 +17,9 @@ class User{
     surname:string;
 
     @Column()
+    slug:string;
+
+    @Column()
     email:string;
 
     @Column({name:"birth_date"})

@@ -7,6 +7,14 @@ class FakeUserRepository implements IUserRepository{
 
     private users:User [] = [];
 
+    constructor(){
+        const user =  new User(); 
+
+        Object.assign(user,{id:"85879990-4d56-46c6-8c71-7b7b8d084e62",name:"usuário padrão",surname:"de teste", email:"teste@teste.com", birthDate:new Date(), password:"123hashed", cpf:"12102545067", cnpj:"", street:"teste", houseNumber:1, district:"teste", complement:"teste", reference:"teste", income:100, phoneNumber:"924470", phoneNumber2:"234567", idCity:1, idPlan:1})
+        
+        this.users.push(user)
+    }
+
     public async create({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:ICreateUserDTO):Promise<User>{
         const user =  new User(); 
 
@@ -26,7 +34,6 @@ class FakeUserRepository implements IUserRepository{
         user.password = password;
 
         this.users.splice(index,1,user)
-
         return user;       
     }
 
@@ -39,6 +46,7 @@ class FakeUserRepository implements IUserRepository{
     }
 
     public async findByEmail(email:string):Promise<User>{ 
+        //console.log(this.users)
                
         const foundUser = this.users.find(usr => usr.email === email,);
 
@@ -51,6 +59,7 @@ class FakeUserRepository implements IUserRepository{
     };
     public async findAll():Promise<Array<User>>{
         return this.users;
+
     }
 
     public async findByCPF(cpf:string):Promise<User>{ 

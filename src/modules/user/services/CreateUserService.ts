@@ -6,25 +6,8 @@ import IUserRepository from '../IRepositories/IUserRepository';
 import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider'; 
 import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
 import EmailConfig from '@config/email';
+import ICreateUserDTO from '../dtos/ICreateUserDTO';
 
-interface IUserInterface{
-    name:string, 
-    surname:string,
-    email:string, 
-    birthDate:Date, 
-    password:string, 
-    cpf:string, 
-    cnpj:string, 
-    street:string, 
-    houseNumber:number, 
-    district:string, 
-    complement:string, 
-    reference:string, 
-    income:number, 
-    phoneNumber:string, 
-    phoneNumber2:string, 
-    idCity:number
-}
 
 interface IUserWelcomeEmail{
     email:string,
@@ -46,7 +29,7 @@ class CreateUserService {
         private hashProvider:IHashProvider
     ){}
 
-    public async execute({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:IUserInterface):Promise<User> {
+    public async execute({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:ICreateUserDTO):Promise<User> {
 
         await this.validateDocument(cpf,cnpj);
         await this.validateEmail(email);        

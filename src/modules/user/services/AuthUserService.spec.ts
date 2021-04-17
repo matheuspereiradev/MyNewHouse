@@ -13,33 +13,12 @@ describe("Test service of Auth service", () => {
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(fakeNodeMailerProvider,fakeRepository, hashProviderFake);
-
         const authService = new AuthUserService(fakeRepository, hashProviderFake);
 
-        const { email, id } = await createUserService.execute({
-            name:"Apollo",
-            surname:"Lima Modesto",
-            email: "abduh@mail.com",
-            birthDate: new Date(),
-            password: "1234",
-            street: "rua dos árabes",
-            cpf: "41702359085",
-            cnpj: "",
-            houseNumber: 5,
-            district: "bairro iraniano",
-            complement: "A",
-            reference: "na Ahli Kaja",
-            income: 3500,
-            phoneNumber: "993450011",
-            phoneNumber2: "988124400",
-            idCity: 1
-        })
+        const responseAuthentication = await authService.authenticate({ email:"teste@teste.com", password: "123" });
 
-        const responseAuthentication = await authService.authenticate({ email, password: "1234" });
-
-        expect(responseAuthentication.user.email).toBe(email);
-        expect(responseAuthentication.user.id).toBe(id);
+        expect(responseAuthentication.user.email).toBe("teste@teste.com");
+        expect(responseAuthentication.user.id).toBe("85879990-4d56-46c6-8c71-7b7b8d084e62");
         expect(responseAuthentication).toHaveProperty('token')
     })
 
@@ -59,29 +38,10 @@ describe("Test service of Auth service", () => {
         
         const authService = new AuthUserService(fakeRepository, hashProviderFake);
         const createUserService = new CreateUserService(fakeNodeMailerProvider,fakeRepository, hashProviderFake);
-
-        const { email, id,password } = await createUserService.execute({
-            name:"Apollo",
-            surname:"Lima Modesto",
-            email: "abduh@mail.com",
-            birthDate: new Date(),
-            password: "1234",
-            street: "rua dos árabes",
-            cpf: "41702359085",
-            cnpj: "",
-            houseNumber: 5,
-            district: "bairro iraniano",
-            complement: "A",
-            reference: "na Ahli Kaja",
-            income: 3500,
-            phoneNumber: "993450011",
-            phoneNumber2: "988124400",
-            idCity: 1
-        })
         
         expect(
-            authService.authenticate({ email, password: "abc" })
-        ).rejects.toBeInstanceOf(Erro) ;
+            authService.authenticate({ email:"teste@teste.com", password: "abc" })
+        ).rejects.toBeInstanceOf(Erro);
 
         
     })

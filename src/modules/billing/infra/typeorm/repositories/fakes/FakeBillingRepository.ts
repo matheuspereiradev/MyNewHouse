@@ -8,11 +8,11 @@ class FakeBillingRepository implements IBillingRepository{
 
     private billings:Billing[]=[];
 
-    public async create({barcode,billingValue,digitableLine,expirationDate,idProduct,idUser,ourNumber,paymentDay,paymentLink}:ICreateBillingDTO):Promise<Billing>{
+    public async create({barcode,billingValue,digitableLine,expirationDate,ourNumber,paymentDay,paymentLink}:ICreateBillingDTO):Promise<Billing>{
    
         const bill = new Billing();
 
-        Object.assign(bill,{barcode,billingValue,digitableLine,expirationDate,idProduct,idUser,ourNumber,paymentDay,paymentLink});
+        Object.assign(bill,{barcode,billingValue,digitableLine,expirationDate,ourNumber,paymentDay,paymentLink});
 
         this.billings.push(bill);
 

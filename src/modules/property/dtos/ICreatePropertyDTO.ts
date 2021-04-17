@@ -1,0 +1,21 @@
+export default interface ICreatePropertyDTO{
+    street:string;
+    houseNumber:number;
+    district:string
+    complement:string;
+    idCity:number;
+    idAdvertiser:string;
+    idContractType:number;
+    idPropertyType:number;
+    amountValue:number;
+    isFinancing:boolean;
+    latitude:number;
+    longitude:number;
+    amountBathroom:number;
+    amountBedroom:number;
+    amountParking:number;
+    hasPool:boolean;
+    note:string;
+    length:number;
+    width:number;
+}

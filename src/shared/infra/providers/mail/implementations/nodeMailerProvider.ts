@@ -31,19 +31,18 @@ class NodeMailerProvider implements ISendMail {
     }
 
     public async configureTranporter(){
-        await nodemailer.createTestAccount().then(account =>{
-            const transporter = nodemailer.createTransport({
-                host:account.smtp.host,
-                port:account.smtp.port,
-                secure:account.smtp.secure,
-                auth:{
-                    user:account.user,
-                    pass:account.pass
-                }
-            });
-
-            this.client = transporter;
+         
+        const transporter = nodemailer.createTransport({
+            host:"smtp.gmail.com",
+            port: 587,
+            auth: {user:process.env.LOGIN_GMAIL, pass:process.env.PASSWORD_GMAIL},
+            tls: {
+                rejectUnauthorized: false
+            }
         });
+
+        this.client = transporter;
+    
     }
 }
 

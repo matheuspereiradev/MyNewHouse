@@ -11,31 +11,9 @@ describe("Test Account Recovery",()=>{
         const repositoryFake = new FakeUserRepository();
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
-
-        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
-
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
-
-        await createUserService.execute({
-            name:"Apollo",
-            surname:"Lima Modesto",
-            email:"popo@email.com",
-            birthDate:new Date(),
-            password:"321",
-            street:"rua das orquideas",
-            cpf:"50989126013",
-            cnpj:"",
-            houseNumber:12,
-            district:"sao jose",
-            complement:"b",
-            reference:"na esquina",
-            income:900,
-            phoneNumber:"8892424740",
-            phoneNumber2:"92435678",
-            idCity:1
-        });
-
-        const link = await recoveryPassword.sendRecoveryMail({email:"popo@email.com"})
+        
+        const link = await recoveryPassword.sendRecoveryMail({email:"teste@teste.com"})
 
         expect(link).not.toBe("")
 
@@ -57,38 +35,17 @@ describe("Test Account Recovery",()=>{
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
-
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
-
-        const user = await createUserService.execute({
-            name:"Apollo",
-            surname:"Lima Modesto",
-            email:"popo@email.com",
-            birthDate:new Date(),
-            password:"321",
-            street:"rua das orquideas",
-            cpf:"50989126013",
-            cnpj:"",
-            houseNumber:12,
-            district:"sao jose",
-            complement:"b",
-            reference:"na esquina",
-            income:900,
-            phoneNumber:"8892424740",
-            phoneNumber2:"92435678",
-            idCity:1
-        });
         
         const userChanged = await recoveryPassword.changePassword({
-            id:user.id,
-            email:user.email,
+            id:"85879990-4d56-46c6-8c71-7b7b8d084e62",
+            email:"teste@teste.com",
             password:"cajuina"
         });
 
         const hashpassword = await hashProviderFake.genarateHash("cajuina");
 
-        expect(userChanged.id).toBe(user.id)
+        expect(userChanged.id).toBe("85879990-4d56-46c6-8c71-7b7b8d084e62")
         expect(userChanged.password).toEqual(hashpassword);
         
     });
@@ -112,32 +69,11 @@ describe("Test Account Recovery",()=>{
         const hashProviderFake = new FakeHashProvider();
         const fakeNodeMailerProvider = new FakeNodeMailerProvider();
 
-        const createUserService = new CreateUserService(fakeNodeMailerProvider,repositoryFake, hashProviderFake);
-
         const recoveryPassword = new RecoveryPassword(fakeNodeMailerProvider,repositoryFake,hashProviderFake);
-
-        const user = await createUserService.execute({
-            name:"Apollo",
-            surname:"Lima Modesto",
-            email:"popo@email.com",
-            birthDate:new Date(),
-            password:"321",
-            street:"rua das orquideas",
-            cpf:"50989126013",
-            cnpj:"",
-            houseNumber:12,
-            district:"sao jose",
-            complement:"b",
-            reference:"na esquina",
-            income:900,
-            phoneNumber:"8892424740",
-            phoneNumber2:"92435678",
-            idCity:1
-        });
 
         expect(recoveryPassword.changePassword({
             id:"26a12884-9563-11eb-a8b3-0242ac130003",
-            email:user.email,
+            email:"teste@teste.com",
             password:"cajuina"
         })).rejects.toBeInstanceOf(Erro)
 
