@@ -1,11 +1,7 @@
-import { inject,injectable } from 'tsyringe'
 import Erro from '@shared/errors/AppError';
-import { User } from '@modules/user/infra/typeorm/entities/User';
-import IPropertyRepository from '../IRepositories/IPropertyRepository';
-import ICreatePropertyDTO from '../dtos/ICreatePropertyDTO';
+import { inject, injectable } from 'tsyringe';
 import { Property } from '../infra/typeorm/entities/Property';
-import IUserRepository from '@modules/user/IRepositories/IUserRepository';
-import IDeletePropertyDTO from '../dtos/IDeletepropertyDTO';
+import IPropertyRepository from '../IRepositories/IPropertyRepository';
 
 @injectable()
 class UpdatePropertyService {
