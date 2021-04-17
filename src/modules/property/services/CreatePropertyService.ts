@@ -28,13 +28,13 @@ class CreatePropertyService {
 
     public async validateAmountUserProperties(idUser:string):Promise<any>{
 
-        const {plan} = await this.userRepository.findByID(idUser);
+        const user = await this.userRepository.findByID(idUser);
         const amountUserAds = await this.propertyRepository.countUserProperties(idUser);
 
-        if(!plan)
+        if(!user)
             throw new Erro("Internal error: plan not found",1037)
 
-        if(amountUserAds>=plan.adsAmount)
+        if(amountUserAds>=user.plan.adsAmount)
             throw new Erro("maximum number of ads reached",1037)
     }
 
