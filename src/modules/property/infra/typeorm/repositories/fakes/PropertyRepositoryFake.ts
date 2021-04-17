@@ -79,9 +79,9 @@ class PropertyRepositoryFake implements IPropertyRepository{
 
     public async update(data:Property):Promise<Property>{
         const index = this.properties.findIndex(prop=>prop.id === data.id);
-        const prop = this.properties[index];
-        this.properties.splice(index,1)
-        return prop;
+        this.properties.splice(index,1,data)
+        const upd = this.properties[index]
+        return upd;
     }
 }
 
