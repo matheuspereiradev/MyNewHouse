@@ -35,9 +35,9 @@ describe("Test DELETE a property",()=>{
             idProperty:"66982f1c-61c9-4e96-86c3-0000000000"
         })).rejects.toBeInstanceOf(Erro);
 
-        //const find = propertyRepositoryFake.findByID("66982f1c-61c9-4e96-86c3-65b806c4cd73")
+        const find = await propertyRepositoryFake.findByID("66982f1c-61c9-4e96-86c3-65b806c4cd73")
         
-        //expect(find).not.toBe({})*/
+        expect(find).not.toBe(undefined)
     });
 
     it("should not be able to change the plan with a invalid user",async ()=>{
