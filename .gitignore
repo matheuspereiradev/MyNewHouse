@@ -105,3 +105,6 @@ dist
 
 src/config/auth.ts
 src/config/charges.ts
+
+temp/*
+!temp/.gitkeep
