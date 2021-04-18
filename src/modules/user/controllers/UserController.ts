@@ -15,11 +15,11 @@ class UserController {
     }
 
     async create(request: Request, response: Response) {
-        const { name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity } = request.body;
+        const { name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, gender } = request.body;
         
         const createUserService = container.resolve(CreateUserService);
 
-        const user = await createUserService.execute({name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity})
+        const user = await createUserService.execute({name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender})
 
         return response.status(201).json(user);
 
