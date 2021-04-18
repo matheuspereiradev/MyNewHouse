@@ -68,6 +68,12 @@ class User{
     @Column({name:"id_city"})
     idCity:number;
 
+    @Column()
+    avatar:string;
+
+    @Column()
+    gender:string;
+
     @OneToOne(type=>City,city=>city.id)
     @JoinColumn({name:"id_city"})
     city:City

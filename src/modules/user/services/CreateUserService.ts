@@ -29,14 +29,14 @@ class CreateUserService {
         private hashProvider:IHashProvider
     ){}
 
-    public async execute({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity}:ICreateUserDTO):Promise<User> {
+    public async execute({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar, gender}:ICreateUserDTO):Promise<User> {
 
         await this.validateDocument(cpf,cnpj);
         await this.validateEmail(email);        
 
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.create({
-            name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity
+            name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar, gender
         });
 
         await this.sendWelcomeMail({email, name, surname});

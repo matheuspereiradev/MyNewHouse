@@ -14,5 +14,7 @@ export default interface ICreateUserDTO{
     income:number
     phoneNumber:string,
     phoneNumber2:string,
-    idCity:number
+    idCity:number,
+    avatar:string,
+    gender:string
 }
