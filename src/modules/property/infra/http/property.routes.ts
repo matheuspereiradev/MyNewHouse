@@ -7,7 +7,8 @@ const propertyController = new PropertyController();
 
 routesProperty.get('/',propertyController.index);
 routesProperty.get('/:id',propertyController.findByID); 
+routesProperty.get('/user/:slug',propertyController.findBySlug); 
 routesProperty.post('/',ensureAuthenticated,propertyController.create);
-routesProperty.delete('/:id',ensureAuthenticated,propertyController.delete)
+routesProperty.delete('/:id',ensureAuthenticated,propertyController.delete);
 
 export {routesProperty};

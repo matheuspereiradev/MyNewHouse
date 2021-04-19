@@ -2,13 +2,16 @@ import { getRepository, Repository } from 'typeorm';
 import IPropertyRepository from '@modules/property/IRepositories/IPropertyRepository';
 import { Property } from '../entities/Property';
 import ICreatePropertyDTO from '@modules/property/dtos/ICreatePropertyDTO';
+import { User } from '@modules/user/infra/typeorm/entities/User';
 
 class PropertyRepository implements IPropertyRepository{
 
     private ormRepository:Repository<Property>;
+    private userRepository:Repository<User>;
 
     constructor(){
         this.ormRepository = getRepository(Property)
+        this.userRepository = getRepository(User)
     }
 
     public async findAll():Promise<Array<Property>>{
@@ -22,9 +25,11 @@ class PropertyRepository implements IPropertyRepository{
     }
 
     public async findByAdvertiser(userSlug:string):Promise<Array<Property>>{
-        /*const all = await this.ormRepository.();
-        return all;*/
-        return null
+        const userid = await this.userRepository.findOne({where:{slug:userSlug}});
+        console.log(userSlug);
+        console.log(userid)
+        const property = await this.ormRepository.find({where:{idAdvertiser:userid}})
+        return property
     }
 
     public async create(data:ICreatePropertyDTO):Promise<Property>{

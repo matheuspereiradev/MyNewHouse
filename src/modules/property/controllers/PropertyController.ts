@@ -15,11 +15,21 @@ class PropertyController {
     }
 
     async findByID(request: Request, response: Response) {
-        let {id} = request.params;
+        const {id} = request.params;
 
         const propertyRepository = new PropertyRepository();
         
         const result = await propertyRepository.findByID(id);
+
+        return response.status(200).json(result);
+    }
+
+    async findBySlug(request: Request, response: Response) {
+        const {slug} = request.params;
+
+        const propertyRepository = new PropertyRepository();
+        
+        const result = await propertyRepository.findByAdvertiser(slug);
 
         return response.status(200).json(result);
     }
