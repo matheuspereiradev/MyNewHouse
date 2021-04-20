@@ -60,6 +60,13 @@ class UserRepository implements IUserRepository{
         return user;
     }
 
+    public async changeAvatar(idUser:string, avatar:string):Promise<User>{
+        const user = await this.ormRepository.findOne({where:{id:idUser}});
+        user.avatar = avatar;
+        await this.ormRepository.save(user)
+        return user;
+    }
+
 }
 
 export {UserRepository}

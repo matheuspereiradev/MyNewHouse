@@ -45,6 +45,17 @@ class FakeUserRepository implements IUserRepository{
         return user;    
     }
 
+    public async changeAvatar(idUser:string, avatar:string):Promise<User>{
+        const index =  this.users.findIndex(usr=>usr.id === idUser)
+
+        const user = this.users[index];
+        
+        user.avatar = avatar;
+
+        this.users.splice(index,1,user)
+        return user;    
+    }
+
     public async findByEmail(email:string):Promise<User>{ 
         //console.log(this.users)
                
