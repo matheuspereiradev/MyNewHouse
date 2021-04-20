@@ -26,8 +26,6 @@ class PropertyRepository implements IPropertyRepository{
 
     public async findByAdvertiser(userSlug:string):Promise<Array<Property>>{
         const userid = await this.userRepository.findOne({where:{slug:userSlug}});
-        console.log(userSlug);
-        console.log(userid)
         const property = await this.ormRepository.find({where:{idAdvertiser:userid}})
         return property
     }

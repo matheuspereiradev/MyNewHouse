@@ -10,4 +10,5 @@ export default interface IUserRepository{
     findAll():Promise<Array<User>>;
     patchPassword(id:string,password:string):Promise<User>;
     saveUpdate(user:User):Promise<User>;
+    changeAvatar(idUser:string, avatar:string):Promise<User>;
 }

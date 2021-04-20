@@ -3,6 +3,7 @@ import { UserController } from '@modules/user/controllers/UserController';
 import configUp from '@config/multer'
 import multer from 'multer';
 import { celebrate, Joi, Segments } from 'celebrate';
+import ensureAuthenticated from  '@modules/user/infra/http/middleware/ensureAuthenticated';
 
 const routesUser = Router();
 
@@ -30,6 +31,7 @@ routesUser.post('/',celebrate({
         idCity:Joi.number()
     }
 }),uploadFile.single('avatar'),userController.create);
+routesUser.patch('/avatar',ensureAuthenticated,uploadFile.single('avatar'),userController.changeAvatar)
 
 
 export {routesUser};
