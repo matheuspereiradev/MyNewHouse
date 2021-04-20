@@ -4,6 +4,7 @@ import cors from 'cors';
 import CreateConnection from '@shared/infra/typeorm/index';
 import { routes } from '@shared/infra/http/routes/index.routes';
 import 'reflect-metadata';
+import {errors} from 'celebrate'
 import Erro from '@shared/errors/AppError';
 import path from 'path';
 
@@ -18,6 +19,8 @@ CreateConnection();
 app.use('/files',express.static(path.resolve(__dirname,"..","temp")));
 
 app.use(routes)
+
+app.use(errors())
 app.use(
     (err:Error, request:Request, response:Response, next:NextFunction)=>{
 
