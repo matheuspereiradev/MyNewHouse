@@ -15,7 +15,7 @@ import {PlanRepository} from '@modules/plans/infra/typeorm/repositories/PlanRepo
 import IPropertyRepository from '@modules/property/IRepositories/IPropertyRepository';
 import {PropertyRepository} from '@modules/property/infra/typeorm/repositories/PropertyRepository';
 import ICreditCardProvider from '@modules/charges/infra/providers/charges/model/ICreditCardProvider';
-import {CreditCardPagSeguro} from '@modules/charges/infra/providers/charges/implementation/CreditCardPagSeguro'
+import {CreditCardMercadoPago} from '@modules/charges/infra/providers/charges/implementation/CreditCardMercadoPago'
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<IHashProvider>('HashProvider', bcryptHashProvider);
@@ -23,7 +23,7 @@ container.registerSingleton<ISendMail>('SendMail',NodeMeiler);
 container.registerSingleton<IBillingRepository>('BillingRepository',BillingRepository);
 container.registerSingleton<IPlanRepository>('PlanRepository',PlanRepository);
 container.registerSingleton<IPropertyRepository>('PropertyRepository',PropertyRepository);
-container.registerSingleton<ICreditCardProvider>('CreditCardProvider',CreditCardPagSeguro);
+container.registerSingleton<ICreditCardProvider>('CreditCardProvider',CreditCardMercadoPago);
 
 //TODO COLOCAR GERADOR CORRETO
 container.registerSingleton<IGenerateCharge>('GenerateRemoteCharge',GenerateChargeFake);
