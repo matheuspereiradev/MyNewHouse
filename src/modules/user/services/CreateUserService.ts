@@ -45,7 +45,9 @@ class CreateUserService {
     }
 
     public async validateDocument(cpf:string,cnpj:string){
-        if (cpf) {
+        if(cpf && cnpj){
+            throw new Erro("Not is possible define a cpf and a cnpj for one person",1059);
+        }if (cpf) {
             await this.validateCPF(cpf)
         }else if(cnpj){
             await this.validateCPNJ(cnpj)
