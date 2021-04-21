@@ -6,6 +6,7 @@ import { ChangeAvatarService } from '@modules/user/services/ChangeAvatarService'
 import {UserRepository} from '@modules/user/infra/typeorm/repositories/UserRepository'
 import { DeleteUserService } from '../services/DeleteUserService';
 import { InactivateUserService } from '../services/InactivateUserService';
+import { UpdateUserService } from '../services/UpdateUserService';
 
 class UserController {
 
@@ -25,7 +26,17 @@ class UserController {
         const user = await createUserService.execute({name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender})
 
         return response.status(201).json(user);
+    }
 
+    async update(request: Request, response: Response) {
+        const id = request.user.id;
+        const { name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district,  complement, reference, income, phoneNumber, phoneNumber2, idCity, gender,slug } = request.body;
+        
+        const updateUserService = container.resolve(UpdateUserService);
+
+        const user = await updateUserService.execute({id,name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender,slug})
+
+        return response.status(200).json(user);
     }
 
     async delete(request: Request, response: Response){
