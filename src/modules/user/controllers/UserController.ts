@@ -4,6 +4,7 @@ import { container } from 'tsyringe'
 import { CreateUserService } from '@modules/user/services/CreateUserService';
 import { ChangeAvatarService } from '@modules/user/services/ChangeAvatarService';
 import {UserRepository} from '@modules/user/infra/typeorm/repositories/UserRepository'
+import { DeleteUserService } from '../services/DeleteUserService';
 
 class UserController {
 
@@ -26,8 +27,18 @@ class UserController {
 
     }
 
+    async delete(request: Request, response: Response){
+        const { id } = request.params;
+        
+        const deleteUserService = container.resolve(DeleteUserService);
+
+        const user = await deleteUserService.execute(id)
+
+        return response.status(200).json(user);
+    }
+
     async changeAvatar(request: Request, response: Response) {
-        console.log(request.user)
+
         const id = request.user.id;
         const avatar = request.file.filename;
         

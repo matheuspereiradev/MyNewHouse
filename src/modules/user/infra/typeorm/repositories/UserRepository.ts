@@ -67,6 +67,12 @@ class UserRepository implements IUserRepository{
         return user;
     }
 
+    public async delete(idUser:string):Promise<User>{
+        const user = this.ormRepository.findOne({where:{id:idUser}})
+        await this.ormRepository.delete({id:idUser})
+        return user;
+    }
+
 }
 
 export {UserRepository}
