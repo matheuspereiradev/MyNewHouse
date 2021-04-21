@@ -1,4 +1,5 @@
+import IPaymentCredCardDTO from "@modules/charges/dtos/IPaymentCredCardDTO";
 
 export default interface ICreditCardProvider{
-    generate():Promise<any>;
+    generate(data:IPaymentCredCardDTO):Promise<any>;
 }
