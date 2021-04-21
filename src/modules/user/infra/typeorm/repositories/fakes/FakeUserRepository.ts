@@ -2,6 +2,7 @@ import {User} from '@modules/user/infra/typeorm/entities/User';
 import IUserRepository from '@modules/user/IRepositories/IUserRepository';
 import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO';
 import { v4 as uuid } from 'uuid'
+import IUpdateUserDTO from '@modules/user/dtos/IUpdateUserDTO';
 
 class FakeUserRepository implements IUserRepository{
 
@@ -37,7 +38,38 @@ class FakeUserRepository implements IUserRepository{
         return user;       
     }
 
-    public async saveUpdate(user:User):Promise<User>{
+    public async update(data:IUpdateUserDTO):Promise<User>{
+        
+        const index =  this.users.findIndex(usr=>usr.id === data.id)
+
+        const user = this.users[index];
+        
+        user.idCity = data.idCity;
+        user.income = data.income;
+        user.name = data.name;
+        user.phoneNumber = data.phoneNumber;
+        user.phoneNumber2 = data.phoneNumber2;
+        user.reference =data.reference;
+        user.slug = data.slug;
+        user.street =data.street;
+        user.surname = data.surname;
+        user.avatar = data.avatar;
+        user.birthDate = data.birthDate;
+        user.cnpj = data.cnpj;
+        user.complement = data.cnpj;
+        user.cpf = data.cpf;
+        user.district = data.district;
+        user.email  = data.email;
+        user.gender = data.gender;
+        user.houseNumber = data.houseNumber;
+        if (data.password!=="")
+            user.password = data.password;
+
+        this.users.splice(index,1,user)
+        return user;       
+    }
+
+    public async savePatch(user:User):Promise<User>{
         const index =  this.users.findIndex(usr=>usr.id === user.id)
 
         this.users.splice(index,1,user)
