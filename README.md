@@ -3,6 +3,10 @@
 Projeto iniciado em 23/03/2021
 @Autor Matheus Lima
 
+## FASE DO PROJETO
+
+⌚🛠EM DESENVOLVIMENTO
+
 ## plano de atividade
 https://trello.com/b/bEHRIc8h/projeto-lar-doce-lar
 
@@ -13,7 +17,6 @@ https://trello.com/b/bEHRIc8h/projeto-lar-doce-lar
 - LOCATION
 - PLANS
 - PROPERTY
-- PAYMENTSIMULATION
 
 ## FERRAMENTAS/ BIBLIOTECAS
 
@@ -31,6 +34,7 @@ https://trello.com/b/bEHRIc8h/projeto-lar-doce-lar
 - express
 - express-async-errors
 - jest
+- -multer
 
 ## SCRIPTS
 
