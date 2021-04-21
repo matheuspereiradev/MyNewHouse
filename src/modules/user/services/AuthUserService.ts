@@ -46,7 +46,6 @@ class AuthUserService {
         const token = sign(
             {
                 email:user.email,
-                isBroked:user.isBroker,
                 name:user.name
             }, secret, {
                 subject: user.id,

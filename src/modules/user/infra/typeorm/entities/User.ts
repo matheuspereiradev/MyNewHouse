@@ -75,9 +75,6 @@ class User{
     @JoinColumn({name:"id_city"})
     city:City
 
-    @Column({name:"is_broker"})
-    isBroker:boolean;
-
     @CreateDateColumn()
     created_at:Date;
 
