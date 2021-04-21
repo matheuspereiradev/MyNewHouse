@@ -73,6 +73,12 @@ class UserRepository implements IUserRepository{
         return user;
     }
 
+    public async inactivate(idUser:string):Promise<User>{
+        const user = this.ormRepository.findOne({where:{id:idUser}})
+        await this.ormRepository.softDelete({id:idUser})
+        return user;
+    }
+
 }
 
 export {UserRepository}

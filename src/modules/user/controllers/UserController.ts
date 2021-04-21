@@ -5,6 +5,7 @@ import { CreateUserService } from '@modules/user/services/CreateUserService';
 import { ChangeAvatarService } from '@modules/user/services/ChangeAvatarService';
 import {UserRepository} from '@modules/user/infra/typeorm/repositories/UserRepository'
 import { DeleteUserService } from '../services/DeleteUserService';
+import { InactivateUserService } from '../services/InactivateUserService';
 
 class UserController {
 
@@ -28,11 +29,21 @@ class UserController {
     }
 
     async delete(request: Request, response: Response){
-        const { id } = request.params;
+        const id = request.user.id;
         
         const deleteUserService = container.resolve(DeleteUserService);
 
         const user = await deleteUserService.execute(id)
+
+        return response.status(200).json(user);
+    }
+
+    async inactivate(request: Request, response: Response){
+        const id = request.user.id;
+        
+        const inactivateUserService = container.resolve(InactivateUserService);
+
+        const user = await inactivateUserService.execute(id)
 
         return response.status(200).json(user);
     }

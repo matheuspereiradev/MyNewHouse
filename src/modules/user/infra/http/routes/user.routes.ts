@@ -31,7 +31,8 @@ routesUser.post('/',celebrate({
         idCity:Joi.number()
     }
 }),uploadFile.single('avatar'),userController.create);
-routesUser.patch('/avatar',ensureAuthenticated,uploadFile.single('avatar'),userController.changeAvatar)
-
+routesUser.patch('/avatar',ensureAuthenticated,uploadFile.single('avatar'),userController.changeAvatar);
+routesUser.delete('/',ensureAuthenticated,userController.delete);
+routesUser.patch('/inactivate_account',ensureAuthenticated,userController.inactivate);
 
 export {routesUser};

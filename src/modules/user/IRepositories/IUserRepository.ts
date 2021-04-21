@@ -12,4 +12,5 @@ export default interface IUserRepository{
     saveUpdate(user:User):Promise<User>;
     changeAvatar(idUser:string, avatar:string):Promise<User>;
     delete(idUser:string):Promise<User>;
+    inactivate(idUser:string):Promise<User>;
 }
