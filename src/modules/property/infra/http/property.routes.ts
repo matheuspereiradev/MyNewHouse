@@ -10,5 +10,6 @@ routesProperty.get('/:id',propertyController.findByID);
 routesProperty.get('/user/:slug',propertyController.findBySlug); 
 routesProperty.post('/',ensureAuthenticated,propertyController.create);
 routesProperty.delete('/:id',ensureAuthenticated,propertyController.delete);
+routesProperty.put('/',ensureAuthenticated,propertyController.update)
 
 export {routesProperty};

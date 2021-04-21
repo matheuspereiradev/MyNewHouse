@@ -3,6 +3,7 @@ import {PropertyRepository} from '@modules/property/infra/typeorm/repositories/P
 import { container } from 'tsyringe';
 import { CreatePropertyService } from '../services/CreatePropertyService';
 import { DeletePropertyService } from '../services/DeletePropertyService';
+import { UpdatePropertyService } from '../services/UpdatePropertyService';
 
 class PropertyController {
 
@@ -53,6 +54,18 @@ class PropertyController {
 
         return response.status(200).json(property);
     }
+
+    async update(request: Request, response: Response){
+        const {id, street, houseNumber, district, complement, idCity, idAdvertiser, idContractType, idPropertyType, amountValue, isFinancing, latitude, longitude, amountBathroom, amountBedroom, amountParking, hasPool, note, length, width} = request.body;
+        
+        const updatePropertyService = container.resolve(UpdatePropertyService);
+        
+        const property = await updatePropertyService.execute({id, street, houseNumber, district, complement, idCity, idAdvertiser, idContractType, idPropertyType, amountValue, isFinancing, latitude, longitude, amountBathroom, amountBedroom, amountParking, hasPool, note, length, width});
+
+        return response.status(200).json(property);
+    }
+
+
 
 
     

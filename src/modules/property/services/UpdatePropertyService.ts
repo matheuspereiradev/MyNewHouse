@@ -1,5 +1,6 @@
 import Erro from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
+import IUpdatePropertyDTO from '../dtos/IUpdatePropertyDTO';
 import { Property } from '../infra/typeorm/entities/Property';
 import IPropertyRepository from '../IRepositories/IPropertyRepository';
 
@@ -11,7 +12,7 @@ class UpdatePropertyService {
         private propertyRepository:IPropertyRepository
     ){}
 
-    public async execute(data:Property):Promise<Property> {
+    public async execute(data:IUpdatePropertyDTO):Promise<Property> {
 
         await this.validateUser(data.idAdvertiser,data.id)
 

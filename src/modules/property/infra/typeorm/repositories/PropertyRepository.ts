@@ -3,6 +3,7 @@ import IPropertyRepository from '@modules/property/IRepositories/IPropertyReposi
 import { Property } from '../entities/Property';
 import ICreatePropertyDTO from '@modules/property/dtos/ICreatePropertyDTO';
 import { User } from '@modules/user/infra/typeorm/entities/User';
+import IUpdatePropertyDTO from '@modules/property/dtos/IUpdatePropertyDTO';
 
 class PropertyRepository implements IPropertyRepository{
 
@@ -50,8 +51,28 @@ class PropertyRepository implements IPropertyRepository{
         return property;
     }
 
-    public async update(data:Property):Promise<Property>{
+    public async update(data:IUpdatePropertyDTO):Promise<Property>{
         const property = await this.ormRepository.findOne({where:[{id:data.id}]});
+
+        property.complement = data.complement;
+        property.hasPool = data.hasPool;
+        property.houseNumber = data.houseNumber;
+        property.idCity = data.idCity;
+        property.idContractType = data.idContractType;
+        property.idPropertyType = data.idPropertyType;
+        property.isFinancing = data.isFinancing;
+        property.latitude =data.latitude;
+        property.longitude = data.longitude;
+        property.length = data.length;
+        property.amountBathroom = data.amountBathroom;
+        property.amountBedroom = data.amountBedroom;
+        property.amountParking = data.amountParking;
+        property.amountValue = data.amountValue;
+        property.district = data.district;
+        property.note = data.note;
+        property.street = data.street;
+        property.width = data.width;
+
         await this.ormRepository.save(data);
         return property;
     }

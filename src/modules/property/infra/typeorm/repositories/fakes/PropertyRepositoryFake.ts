@@ -2,6 +2,7 @@ import { getRepository, Repository } from 'typeorm';
 import IPropertyRepository from '@modules/property/IRepositories/IPropertyRepository';
 import { Property } from '@modules/property/infra/typeorm/entities/Property';
 import ICreatePropertyDTO from '@modules/property/dtos/ICreatePropertyDTO';
+import IUpdatePropertyDTO from '@modules/property/dtos/IUpdatePropertyDTO';
 
 class PropertyRepositoryFake implements IPropertyRepository{
 
@@ -77,9 +78,30 @@ class PropertyRepositoryFake implements IPropertyRepository{
         return prop;
     }
 
-    public async update(data:Property):Promise<Property>{
+    public async update(data:IUpdatePropertyDTO):Promise<Property>{
         const index = this.properties.findIndex(prop=>prop.id === data.id);
-        this.properties.splice(index,1,data)
+        const property = this.properties[index];
+
+        property.complement = data.complement;
+        property.hasPool = data.hasPool;
+        property.houseNumber = data.houseNumber;
+        property.idCity = data.idCity;
+        property.idContractType = data.idContractType;
+        property.idPropertyType = data.idPropertyType;
+        property.isFinancing = data.isFinancing;
+        property.latitude =data.latitude;
+        property.longitude = data.longitude;
+        property.length = data.length;
+        property.amountBathroom = data.amountBathroom;
+        property.amountBedroom = data.amountBedroom;
+        property.amountParking = data.amountParking;
+        property.amountValue = data.amountValue;
+        property.district = data.district;
+        property.note = data.note;
+        property.street = data.street;
+        property.width = data.width;
+
+        this.properties.splice(index,1,property)
         const upd = this.properties[index]
         return upd;
     }
