@@ -43,10 +43,11 @@ describe("Test the change of plan",()=>{
                 district:"sao jose",
                 complement:"b",
                 reference:"na esquina",
-                income:900,
                 phoneNumber:"8892424740",
                 phoneNumber2:"92435678",
-                idCity:1
+                idCity:1,
+                avatar:"img.png",
+                gender:"F"
             });
     
             expect(user.idPlan).toBe(1)

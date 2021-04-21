@@ -27,7 +27,9 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
+            
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
             idCity:1
@@ -61,10 +63,11 @@ describe("Test Service CreateUser",()=>{
             district:"RIacho verde",
             complement:"c",
             reference:"no bar",
-            income:400,
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
-            idCity:1
+            idCity:1,
+            avatar:"img.png",
+            gender:"F"
         });
 
 
@@ -81,7 +84,9 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
+            
             phoneNumber:"00000000",
             phoneNumber2:"92435678",
             idCity:1
@@ -109,7 +114,9 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
+            
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
             idCity:1
@@ -139,7 +146,9 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
+            
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
             idCity:1
@@ -168,10 +177,11 @@ describe("Test Service CreateUser",()=>{
             district:"RIacho verde",
             complement:"c",
             reference:"no bar",
-            income:400,
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
-            idCity:1
+            idCity:1,
+            avatar:"img.png",
+            gender:"F"
         });
 
 
@@ -188,7 +198,8 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
             phoneNumber:"00000000",
             phoneNumber2:"92435678",
             idCity:1
@@ -216,10 +227,11 @@ describe("Test Service CreateUser",()=>{
             district:"RIacho verde",
             complement:"c",
             reference:"no bar",
-            income:400,
             phoneNumber:"8892424740",
             phoneNumber2:"92435678",
-            idCity:1
+            idCity:1,
+            avatar:"img.png",
+            gender:"F"
         });
 
 
@@ -236,7 +248,8 @@ describe("Test Service CreateUser",()=>{
             district:"sao jose",
             complement:"b",
             reference:"na esquina",
-            income:900,
+            avatar:"img.png",
+            gender:"F",
             phoneNumber:"00000000",
             phoneNumber2:"92435678",
             idCity:1

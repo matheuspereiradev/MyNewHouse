@@ -12,7 +12,6 @@ export default interface IUpdateUserDTO{
     district:string, 
     complement:string,
     reference:string,
-    income:number
     phoneNumber:string,
     phoneNumber2:string,
     idCity:number,

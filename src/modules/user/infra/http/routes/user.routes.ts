@@ -25,7 +25,6 @@ routesUser.post('/',celebrate({
         district:Joi.string(),
         complement:Joi.string(),
         reference:Joi.string(),
-        income:Joi.number(),
         phoneNumber:Joi.string(),
         phoneNumber2:Joi.string(),
         idCity:Joi.number()

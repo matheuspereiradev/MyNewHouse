@@ -19,22 +19,22 @@ class UserController {
     }
 
     async create(request: Request, response: Response) {
-        const { name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, gender } = request.body;
+        const { name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity, gender } = request.body;
         
         const createUserService = container.resolve(CreateUserService);
 
-        const user = await createUserService.execute({name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender})
+        const user = await createUserService.execute({name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender})
 
         return response.status(201).json(user);
     }
 
     async update(request: Request, response: Response) {
         const id = request.user.id;
-        const { name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district,  complement, reference, income, phoneNumber, phoneNumber2, idCity, gender,slug } = request.body;
+        const { name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district,  complement, reference, phoneNumber, phoneNumber2, idCity, gender,slug } = request.body;
         
         const updateUserService = container.resolve(UpdateUserService);
 
-        const user = await updateUserService.execute({id,name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender,slug})
+        const user = await updateUserService.execute({id,name,surname,email,birthDate,password,cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity, avatar:request.file.filename, gender,slug})
 
         return response.status(200).json(user);
     }

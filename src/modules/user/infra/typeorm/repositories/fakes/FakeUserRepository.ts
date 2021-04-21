@@ -11,15 +11,15 @@ class FakeUserRepository implements IUserRepository{
     constructor(){
         const user =  new User(); 
 
-        Object.assign(user,{id:"85879990-4d56-46c6-8c71-7b7b8d084e62",name:"usuário padrão",surname:"de teste", email:"teste@teste.com", birthDate:new Date(), password:"123hashed", cpf:"12102545067", cnpj:"", street:"teste", houseNumber:1, district:"teste", complement:"teste", reference:"teste", income:100, phoneNumber:"924470", phoneNumber2:"234567", idCity:1, idPlan:1})
+        Object.assign(user,{id:"85879990-4d56-46c6-8c71-7b7b8d084e62",name:"usuário padrão",surname:"de teste", email:"teste@teste.com", birthDate:new Date(), password:"123hashed", cpf:"12102545067", cnpj:"", street:"teste", houseNumber:1, district:"teste", complement:"teste", reference:"teste", phoneNumber:"924470", phoneNumber2:"234567", idCity:1, idPlan:1})
         
         this.users.push(user)
     }
 
-    public async create({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity,avatar,gender}:ICreateUserDTO):Promise<User>{
+    public async create({name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity,avatar,gender}:ICreateUserDTO):Promise<User>{
         const user =  new User(); 
 
-        Object.assign(user,{name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity,avatar,gender})
+        Object.assign(user,{name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity,avatar,gender})
         
         this.users.push(user)
 
@@ -45,7 +45,6 @@ class FakeUserRepository implements IUserRepository{
         const user = this.users[index];
         
         user.idCity = data.idCity;
-        user.income = data.income;
         user.name = data.name;
         user.phoneNumber = data.phoneNumber;
         user.phoneNumber2 = data.phoneNumber2;

@@ -49,9 +49,6 @@ class User{
     @Column()
     reference:string;
 
-    @Column()
-    income:number;
-
     @Column({name:"phonenumber"})
     phoneNumber:string;
 

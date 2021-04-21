@@ -13,8 +13,8 @@ class UserRepository implements IUserRepository{
         this.ormRepository = getRepository(User)
     }
 
-    public async create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar,gender}:ICreateUserDTO):Promise<User>{
-        const user =  this.ormRepository.create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity,avatar, gender});
+    public async create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity, avatar,gender}:ICreateUserDTO):Promise<User>{
+        const user =  this.ormRepository.create({name, surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity,avatar, gender});
 
         await this.ormRepository.save(user);
 
@@ -35,7 +35,6 @@ class UserRepository implements IUserRepository{
         const user = await this.ormRepository.findOne({where:{id:data.id}});
 
         user.idCity = data.idCity;
-        user.income = data.income;
         user.name = data.name;
         user.phoneNumber = data.phoneNumber;
         user.phoneNumber2 = data.phoneNumber2;

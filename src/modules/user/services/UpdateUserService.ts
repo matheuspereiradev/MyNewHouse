@@ -18,7 +18,7 @@ class UpdateUserService {
         private hashProvider:IHashProvider
     ){}
 
-    public async execute({id,name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity,slug, avatar, gender}:IUpdateUserDTO):Promise<User> {
+    public async execute({id,name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity,slug, avatar, gender}:IUpdateUserDTO):Promise<User> {
 
         await this.validateDocument(cpf,cnpj,id);
         await this.validateEmail(email,id);   
@@ -26,7 +26,7 @@ class UpdateUserService {
         
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.update({
-            id,name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity, avatar, gender,slug
+            id,name,surname, email, birthDate, password: hashedPassword, cpf, cnpj, street, houseNumber, district, complement, reference, phoneNumber, phoneNumber2, idCity, avatar, gender,slug
         });
 
         return user;
