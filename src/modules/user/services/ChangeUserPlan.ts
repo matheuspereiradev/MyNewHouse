@@ -23,7 +23,7 @@ export class ChangeUserPlan{
         user.idPlan = idPlan;
         user.plan = plan;
 
-        await this.userRepository.saveUpdate(user);
+        await this.userRepository.savePatch(user);
 
         return user;
     }
