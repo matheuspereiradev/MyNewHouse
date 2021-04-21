@@ -3,6 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import {User} from '@modules/user/infra/typeorm/entities/User';
 import IUserRepository from '@modules/user/IRepositories/IUserRepository';
 import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO';
+import IUpdateUserDTO from '@modules/user/dtos/IUpdateUserDTO';
 
 class UserRepository implements IUserRepository{
 
@@ -24,6 +25,35 @@ class UserRepository implements IUserRepository{
         const user = await this.ormRepository.findOne({id});
 
         user.password = password;
+
+        await this.ormRepository.save(user);
+
+        return user;
+    }
+
+    public async update(data:IUpdateUserDTO):Promise<User>{
+        const user = await this.ormRepository.findOne({where:{id:data.id}});
+
+        user.idCity = data.idCity;
+        user.income = data.income;
+        user.name = data.name;
+        user.phoneNumber = data.phoneNumber;
+        user.phoneNumber2 = data.phoneNumber2;
+        user.reference =data.reference;
+        user.slug = data.slug;
+        user.street =data.street;
+        user.surname = data.surname;
+        user.avatar = data.avatar;
+        user.birthDate = data.birthDate;
+        user.cnpj = data.cnpj;
+        user.complement = data.cnpj;
+        user.cpf = data.cpf;
+        user.district = data.district;
+        user.email  = data.email;
+        user.gender = data.gender;
+        user.houseNumber = data.houseNumber;
+        if (data.password!=="")
+            user.password = data.password;
 
         await this.ormRepository.save(user);
 
@@ -54,7 +84,7 @@ class UserRepository implements IUserRepository{
         return all;
     }
 
-    public async saveUpdate(user:User):Promise<User>{
+    public async savePatch(user:User):Promise<User>{
         await this.ormRepository.save(user);
 
         return user;
