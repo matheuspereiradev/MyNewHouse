@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { GenerateCreaditCardChargeService } from "@modules/charges/services/GenerateCreaditCardChargeService";
+import { GenerateCreaditCardChargeService } from "@modules/charges/services/GenerateCreditCardChargeService";
 
 class ChargesCreditCardController {
 
