@@ -46,7 +46,7 @@ class UserRepository implements IUserRepository{
         user.avatar = data.avatar;
         user.birthDate = data.birthDate;
         user.cnpj = data.cnpj;
-        user.complement = data.cnpj;
+        user.complement = data.complement;
         user.cpf = data.cpf;
         user.district = data.district;
         user.email  = data.email;
