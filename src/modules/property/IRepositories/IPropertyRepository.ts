@@ -10,12 +10,4 @@ export default interface IPropertyRepository{
     create(data:ICreatePropertyDTO):Promise<Property>;
     delete(id:string):Promise<Property>;
     update(data:IUpdatePropertyDTO):Promise<Property>;
-    /*
-    findByEmail(email:string):Promise<User>;
-    findByID(id:string):Promise<User>;
-    findByCPF(cpf:string):Promise<User>;
-    findByCNPJ(cnpj:string):Promise<User>;
-    findAll():Promise<Array<User>>;
-    patchPassword(id:string,password:string):Promise<User>;
-    saveUpdate(user:User):Promise<User>;*/
 }
