@@ -5,7 +5,8 @@ import { inject, injectable } from 'tsyringe';
 import IUpdateUserDTO from '../dtos/IUpdateUserDTO';
 import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
 import IUserRepository from '../IRepositories/IUserRepository';
-
+import fs from 'fs';
+import path from 'path'
 
 @injectable()
 class UpdateUserService {
@@ -20,8 +21,8 @@ class UpdateUserService {
     public async execute({id,name,surname, email, birthDate, password, cpf, cnpj, street, houseNumber, district, complement, reference, income, phoneNumber, phoneNumber2, idCity,slug, avatar, gender}:IUpdateUserDTO):Promise<User> {
 
         await this.validateDocument(cpf,cnpj,id);
-        await this.validateEmail(email,id);        
-
+        await this.validateEmail(email,id);   
+        await this.verifyAvatar(id,avatar);
         
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.update({
@@ -67,6 +68,20 @@ class UpdateUserService {
         if ((emailAlreadyUse)&&(emailAlreadyUse.id!==id)) {
             throw new Erro("Email already in use",1050, 409);
         }
+    }
+
+    public async verifyAvatar(id:string,avatar:string):Promise<any>{
+        if(avatar){
+            const user = await this.repository.findByID(id);
+
+            fs.unlink(path.resolve(__dirname,'..','..','..','..','temp',user.avatar),(err)=>{
+                if(err){
+                    console.error(err);
+                    new Erro("Fail update", 1060)
+                }                
+            });
+        }
+        
     }
 
 };
