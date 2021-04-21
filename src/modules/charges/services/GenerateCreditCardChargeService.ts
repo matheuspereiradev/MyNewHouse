@@ -14,9 +14,9 @@ class GenerateCreaditCardChargeService {
         private userRepository:IUserRepository
     ){}
 
-    public async execute():Promise<any> {
+    public async execute({transaction_amount,token,description,installments,payment_method_id,issuer_id,email,docType,docNumber}):Promise<any> {
 
-        await this.creditCardProvider.generate()
+        await this.creditCardProvider.generate({transaction_amount,token,description,installments,payment_method_id,issuer_id,email,docNumber,docType})
 
         return null;
     }
