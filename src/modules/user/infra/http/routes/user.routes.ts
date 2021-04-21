@@ -34,5 +34,6 @@ routesUser.post('/',celebrate({
 routesUser.patch('/avatar',ensureAuthenticated,uploadFile.single('avatar'),userController.changeAvatar);
 routesUser.delete('/',ensureAuthenticated,userController.delete);
 routesUser.patch('/inactivate_account',ensureAuthenticated,userController.inactivate);
+routesUser.put('/',ensureAuthenticated,uploadFile.single('avatar'),userController.update);
 
 export {routesUser};
