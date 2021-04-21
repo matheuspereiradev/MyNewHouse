@@ -34,6 +34,7 @@ https://trello.com/b/bEHRIc8h/projeto-lar-doce-lar
 - express
 - express-async-errors
 - jest
+- -multer
 
 ## SCRIPTS
 
