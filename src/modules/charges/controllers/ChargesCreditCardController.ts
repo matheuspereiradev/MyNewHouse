@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { GenerateCreaditCardCharge } from "../services/GenerateCreditCardCharge";
+import { GenerateCreaditCardChargeService } from "@modules/charges/services/GenerateCreaditCardChargeService";
 
 class ChargesCreditCardController {
 
-
     public async create(request:Request,response:Response){
-        const generateChargeCreditCard = container.resolve(GenerateCreaditCardCharge)
+        const generateChargeCreditCard = container.resolve(GenerateCreaditCardChargeService)
 
         const charge = await generateChargeCreditCard.execute()
 

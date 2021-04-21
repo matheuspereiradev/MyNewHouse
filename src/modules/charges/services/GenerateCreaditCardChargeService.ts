@@ -1,10 +1,10 @@
 import IUserRepository from '@modules/user/IRepositories/IUserRepository';
 import Erro from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import ICreditCardProvider from '../IRepositories/ICreditCardRepository';
+import ICreditCardProvider from '@modules/charges/infra/providers/charges/model/ICreditCardProvider';
 
 @injectable()
-class GenerateCreaditCardCharge {
+class GenerateCreaditCardChargeService {
 
     constructor(
         @inject('CreditCardProvider') 
@@ -23,4 +23,4 @@ class GenerateCreaditCardCharge {
 
 };
 
-export { GenerateCreaditCardCharge };
+export { GenerateCreaditCardChargeService };
