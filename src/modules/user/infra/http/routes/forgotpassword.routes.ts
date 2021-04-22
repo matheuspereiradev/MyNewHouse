@@ -6,7 +6,7 @@ const routeForgotPassword = Router();
 
 const passwordController = new PasswordController();
 
-routeForgotPassword.patch('/sendmail',celebrate({
+routeForgotPassword.patch('/sendmail/:email',celebrate({
     [Segments.BODY]:{
         email:Joi.string().required().email()
     }   

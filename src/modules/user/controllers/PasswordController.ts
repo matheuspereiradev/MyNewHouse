@@ -7,7 +7,7 @@ import { RecoveryPassword } from '@modules/user/services/RecoveryPasswordService
 class PasswordController {
 
     async recoveryPassword(request: Request, response: Response) {
-        const { email } = request.body;
+        const { email } = request.params;
         
         const recoveryPassword = container.resolve(RecoveryPassword);
 
