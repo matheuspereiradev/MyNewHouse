@@ -88,7 +88,6 @@ class FakeUserRepository implements IUserRepository{
     }
 
     public async findByEmail(email:string):Promise<User>{ 
-        //console.log(this.users)
                
         const foundUser = this.users.find(usr => usr.email === email,);
 

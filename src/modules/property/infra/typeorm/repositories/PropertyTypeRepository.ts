@@ -12,7 +12,6 @@ class PropertyTypeRepository implements IPropertyTypeRepository{
 
     public async findAll():Promise<Array<PropertyType>>{
         const all = await this.ormRepository.find();
-        console.log(all)
         return all;
     }
 

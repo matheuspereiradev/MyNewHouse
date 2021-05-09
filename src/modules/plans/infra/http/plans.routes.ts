@@ -7,7 +7,7 @@ const routesPlan = Router();
 const planController = new PlanController();
 
 routesPlan.get('/',planController.show);
-routesPlan.get('/:id',celebrate({
+routesPlan.get('/find/:id',celebrate({
     [Segments.PARAMS]:{
         id:Joi.number()
     }
